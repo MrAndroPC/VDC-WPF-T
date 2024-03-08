@@ -213,9 +213,6 @@
                 </VisualBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Margin="64,293,0,0" Grid.Row="1" Width="200" TextAlignment="Center"><Run Language="ru-ru" Text="Фамилия" /><LineBreak/><Run Language="ru-ru" Text="Имя"/><LineBreak/><Run Language="ru-ru" Text="Отчество"/></TextBlock>
-        <Rectangle Fill="Black" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Stroke="Black" Height="1" Margin="336,169,64,0"/>
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Margin="336,140,0,0" Grid.Row="1"><Run Language="ru-ru" Text="Мои п"/><Run Text="ациенты"/><Run Text=":"/></TextBlock>
         <ScrollViewer VerticalScrollBarVisibility="Auto"  Margin="336,198,64,131" Grid.Column="1" Grid.Row="1">
             <ItemsControl x:Name="TestList">
                 <ItemsControl.Resources>
@@ -318,7 +315,42 @@
                 </Border.Resources>
             </Border>
 
-            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о пациенте"/></TextBlock>
+            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о владельце"/></TextBlock>
+
+            <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" 
+                 Grid.Row="1" 
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Stretch"
+                 Margin="336,128,64,0" 
+                 Height="48">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="0"
+                 Grid.Row="1" 
+                 VerticalAlignment="Top"
+                 Height="48" Background="White" Grid.ColumnSpan="2">
+                <Border.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+
+                </Border.Resources>
+            </Border>
+
+            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о владельце"/></TextBlock>
 
             <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
                 <Button.Resources>

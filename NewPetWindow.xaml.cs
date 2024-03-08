@@ -86,7 +86,7 @@ namespace VDC_WPF_T
         private void AddPic_MouseUp(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "All Files (*.*)|*.*";
+            openFile.Filter = "Изображения|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             if (openFile.ShowDialog() == true)
                 pet.PicSource = new Uri(openFile.FileName, UriKind.Absolute);
 
