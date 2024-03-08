@@ -200,7 +200,7 @@
             <ColumnDefinition Width="*" MinWidth="1024"/>
             <ColumnDefinition Width="*" MaxWidth="200"/>
         </Grid.ColumnDefinitions>
-
+        
         <Rectangle Grid.Row="0" Fill="LightSeaGreen" Grid.ColumnSpan="3"/>
         <TextBlock Grid.Row="0" Text="Ветеринарная диагностическая клиника &quot;Умка&quot;" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.ColumnSpan="3" Foreground="White"/>
 
@@ -323,7 +323,7 @@
                 </TextBox.Resources>
             </TextBox>
 
-            <TextBlock x:Name="SearchBlock" IsHitTestVisible="False" Text="Введите имя пациента" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,15" Foreground="DarkGray" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15">
+            <TextBlock IsHitTestVisible="False" Text="Введите имя пациента" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -336,7 +336,7 @@
                 </TextBlock.Style>
             </TextBlock>
 
-            <Button Grid.Column="0" Height="32" Width="120" Content="Поиск" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="10" Click="SearchPet_Click" >
+            <Button Grid.Column="0" Height="32" Width="120" Content="Поиск" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="10" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -347,6 +347,7 @@
                         <Setter Property="Visibility" Value="Visible"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

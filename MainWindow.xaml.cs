@@ -25,11 +25,7 @@ namespace VDC_WPF_T
 
     public partial class MainWindow : Window
     {
-
         internal ObservableCollection<Pet> Pets { get; set; }
-
-        internal ObservableCollection<Pet> FilteredPets {  get; set; }
-
 
         public MainWindow()
         {
@@ -64,11 +60,8 @@ namespace VDC_WPF_T
         }
 
 
-
-        private void SearchPet_Click(object sender, RoutedEventArgs e)
+        private void Button_Click()
         {
-            string searching = SearchTermTextBox.Text;
-            TestList.ItemsSource = FilterPets(searching);
 
         }
 
@@ -84,22 +77,6 @@ namespace VDC_WPF_T
                 NewPetWindow npw = new NewPetWindow();
                 npw.ShowDialog();
             }
-        }
-
-        private ObservableCollection<Pet> FilterPets(string SearchTerm)
-        {
-            if (SearchTerm == "Введите имя пациента")
-            {
-                FilteredPets = Pets;
-                return FilteredPets;
-            }
-            else
-            {
-                string searchTermLower = SearchTerm.ToLower();
-                FilteredPets = new ObservableCollection<Pet>(Pets.Where(p => p.Name.ToLower().Contains(searchTermLower)));
-                return FilteredPets;
-            }
-            
         }
     }
 
