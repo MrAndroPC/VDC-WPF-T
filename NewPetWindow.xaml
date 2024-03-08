@@ -1,11 +1,11 @@
-﻿<Window x:Class="VDC_WPF_T.MainWindow"
+﻿<Window x:Class="VDC_WPF_T.NewPetWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="600">
+        Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="600">
 
 
     <Window.Resources>
@@ -200,15 +200,15 @@
             <ColumnDefinition Width="*" MinWidth="1024"/>
             <ColumnDefinition Width="*" MaxWidth="200"/>
         </Grid.ColumnDefinitions>
-        
+
         <Rectangle Grid.Row="0" Fill="LightSeaGreen" Grid.ColumnSpan="3"/>
         <TextBlock Grid.Row="0" Text="Ветеринарная диагностическая клиника &quot;Умка&quot;" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.ColumnSpan="3" Foreground="White"/>
 
-        <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,64,0,0">
+        <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,64,0,0" MouseUp="AddPic_MouseUp">
             <Ellipse.Fill>
                 <VisualBrush>
                     <VisualBrush.Visual>
-                        <MediaElement MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="C:\Users\sared\Downloads\pepefrg-44.gif" LoadedBehavior="Play"/>
+                        <MediaElement MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding PicSource}" LoadedBehavior="Play"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Ellipse.Fill>
@@ -303,56 +303,29 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="SearchTermTextBox"
-                Grid.Column="0" 
+            <Border
+                Grid.Column="0"
                  Grid.Row="1" 
                  VerticalAlignment="Top"
-                 Height="48"
-                     Padding="10"
-                 VerticalContentAlignment="Center"
-                 FontSize="15" 
-                 FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                <TextBox.Resources>
+                 Height="48" Background="White" Grid.ColumnSpan="2">
+                <Border.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
-                    <Style TargetType="{x:Type TextBox}">
-                        <Setter Property="BorderBrush" Value="White"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
 
-            <TextBlock IsHitTestVisible="False" Text="Введите имя пациента" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+                </Border.Resources>
+            </Border>
 
-            <Button Grid.Column="0" Height="32" Width="120" Content="Поиск" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="10" >
+            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о пациенте"/></TextBlock>
+
+            <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Visibility" Value="Visible"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
             </Button>
         </Grid>
 

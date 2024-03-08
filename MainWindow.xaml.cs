@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using VDC_WPF_T.Model;
 
 
 namespace VDC_WPF_T
@@ -36,16 +35,16 @@ namespace VDC_WPF_T
 
             Pets = new ObservableCollection<Pet>
         {
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
-            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif\" },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\")},
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
+            new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
         };
 
             // Set the ItemsSource of the ListBox to the Pets collection
@@ -71,6 +70,14 @@ namespace VDC_WPF_T
 
         }
 
+        private void AddNewPet_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button)
+            {
+                NewPetWindow npw = new NewPetWindow();
+                npw.ShowDialog();
+            }
+        }
     }
 
 }
