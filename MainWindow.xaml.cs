@@ -74,7 +74,11 @@ namespace VDC_WPF_T
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            if (sender is Button)
+            {
+                PetWindow pw = new PetWindow();
+                pw.ShowDialog();
+            }
         }
 
         private void AddNewPet_Click(object sender, RoutedEventArgs e)
