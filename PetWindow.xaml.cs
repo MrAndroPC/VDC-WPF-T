@@ -45,19 +45,11 @@ namespace VDC_WPF_T
         */
 
         public string Email { get; set; } = "daria_kkge@gmail.com";
-        private void OnNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(e.Uri.AbsoluteUri);
-            e.Handled = true;
-        }
 
-
-        private Pet pet = new Pet() 
-        { 
-            PicSource = new Uri(@"C:\Users\sared\Downloads\Ellipse 1.png", UriKind.Absolute)
-        };
-        public PetWindow()
+        public Pet _pet { get; set; } = new Pet();
+        public PetWindow(Pet pet)
         {
+            _pet = pet;
 //            test_pet.PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif";
             DataContext = this;
             InitializeComponent();
@@ -99,7 +91,7 @@ namespace VDC_WPF_T
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "Изображения|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             if (openFile.ShowDialog() == true)
-                pet.PicSource = new Uri(openFile.FileName, UriKind.Absolute);
+                _pet.PicSource = new Uri(openFile.FileName, UriKind.Absolute);
 
         }
 

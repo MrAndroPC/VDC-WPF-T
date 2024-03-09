@@ -241,7 +241,7 @@
                                         <Ellipse.Fill>
                                             <VisualBrush>
                                                 <VisualBrush.Visual>
-                                                    <MediaElement x:Name="gif" MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding PicSource}" LoadedBehavior="Play" Volume="0.03"/>
+                                                    <MediaElement x:Name="gif" MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding PicSource}" LoadedBehavior="Play" Volume="0.001"/>
                                                 </VisualBrush.Visual>
                                             </VisualBrush>
                                         </Ellipse.Fill>
@@ -265,7 +265,7 @@
                                             <TextBlock Text="{Binding Breed}" Style="{StaticResource PetInfoTextStyle}"/>
                                         </StackPanel>
                                     </StackPanel>
-                                    <Button Grid.Column="3" Height="32" Content="Узнать больше" Width="152" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Click="Button_Click_1">
+                                    <Button Grid.Column="3" Height="32" Content="Узнать больше" Width="152" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Click="Button_Click_1" Tag="{Binding Id}">
                                         <Button.Resources>
                                             <Style TargetType="{x:Type Border}">
                                                 <Setter Property="CornerRadius" Value="10"/>
