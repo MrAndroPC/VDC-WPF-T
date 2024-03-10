@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VDC_WPF_T.Utilities;
 
 
 namespace VDC_WPF_T
@@ -26,9 +27,9 @@ namespace VDC_WPF_T
     public partial class MainWindow : Window
     {
 
-        internal ObservableCollection<Pet> Pets { get; set; }
+        internal List<Pet> Pets { get; set; }
 
-        internal ObservableCollection<Pet> FilteredPets {  get; set; }
+        internal List<Pet> FilteredPets {  get; set; }
 
 
         public MainWindow()
@@ -36,13 +37,14 @@ namespace VDC_WPF_T
             DataContext = this;
             InitializeComponent();
 
+            
 
-            Pets = new ObservableCollection<Pet>
+            Pets = new List<Pet>
         {
             new Pet { Id = 1, Name = "Я на паре", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://m.media-amazon.com/images/I/512UWQf8s9L._AC_UF1000,1000_QL80_.jpg") },
-            new Pet { Id = 1, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Chipi-chipi-chapa-chapa-cat.mp4")},
-            new Pet { Id = 1, Name = "А???", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/10/7289868698381290754-6540a9d3d8f22.mp4") },
-            new Pet { Id = 2, Name = "Я, когда преподу не передали автоматы", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Dramatic-Kitten-Meme-Template-Screaming-Cat-Meme.mp4") },
+            // new Pet { Id = 1, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Chipi-chipi-chapa-chapa-cat.mp4")},
+            // new Pet { Id = 1, Name = "А???", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/10/7289868698381290754-6540a9d3d8f22.mp4") },
+            // new Pet { Id = 2, Name = "Я, когда преподу не передали автоматы", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Dramatic-Kitten-Meme-Template-Screaming-Cat-Meme.mp4") },
             new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
             new Pet { Id = 1, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
             new Pet { Id = 2, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
@@ -52,9 +54,12 @@ namespace VDC_WPF_T
         };
 
             // Set the ItemsSource of the ListBox to the Pets collection
-            TestList.ItemsSource = Pets;
+           
 
+            LocalStorage.SaveAll(Pets);
+            List<Pet> loadedPets = LocalStorage.LoadAll();
 
+            TestList.ItemsSource = loadedPets;
 
         }
         private void gif_MediaEnded(object sender, RoutedEventArgs e)
@@ -86,7 +91,7 @@ namespace VDC_WPF_T
             }
         }
 
-        private ObservableCollection<Pet> FilterPets(string SearchTerm)
+        private List<Pet> FilterPets(string SearchTerm)
         {
             if (SearchTerm == "Введите имя пациента")
             {
@@ -96,7 +101,7 @@ namespace VDC_WPF_T
             else
             {
                 string searchTermLower = SearchTerm.ToLower();
-                FilteredPets = new ObservableCollection<Pet>(Pets.Where(p => p.Name.ToLower().Contains(searchTermLower)));
+                FilteredPets = new List<Pet>(Pets.Where(p => p.Name.ToLower().Contains(searchTermLower)));
                 return FilteredPets;
             }
             

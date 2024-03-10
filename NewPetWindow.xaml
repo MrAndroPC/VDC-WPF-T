@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T"
         mc:Ignorable="d"
-        Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="600">
+        Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="900">
 
 
     <Window.Resources>
@@ -194,11 +194,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MaxWidth="200" />
             <ColumnDefinition Width="*" MinWidth="1024"/>
             <ColumnDefinition Width="*" MaxWidth="200"/>
+
         </Grid.ColumnDefinitions>
 
         <Rectangle Grid.Row="0" Fill="LightSeaGreen" Grid.ColumnSpan="3"/>
@@ -213,100 +215,34 @@
                 </VisualBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <ScrollViewer VerticalScrollBarVisibility="Auto"  Margin="336,198,64,131" Grid.Column="1" Grid.Row="1">
-            <ItemsControl x:Name="TestList">
-                <ItemsControl.Resources>
-                    <Style TargetType="TextBlock" x:Key="PetInfoTextStyle">
-                        <Setter Property="VerticalAlignment" Value="Top"/>
-                        <Setter Property="HorizontalAlignment" Value="Left"/>
-                        <Setter Property="FontSize" Value="15"/>
-                        <Setter Property="FontFamily" Value="./Resources/montserrat-regular.ttf"/>
-                    </Style>
-                </ItemsControl.Resources>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" Background="White">
-                            <Border Margin="15">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="140"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Ellipse Height="100" Width="100" Grid.Column="0" Stroke="White" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                        <Ellipse.Fill>
-                                            <VisualBrush>
-                                                <VisualBrush.Visual>
-                                                    <MediaElement x:Name="gif" MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding PicSource}" LoadedBehavior="Play"/>
-                                                </VisualBrush.Visual>
-                                            </VisualBrush>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Width="282" Height="30"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Вид: " Style="{StaticResource PetInfoTextStyle}"/>
-                                            <TextBlock Text="{Binding Type}" Style="{StaticResource PetInfoTextStyle}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Пол: " Style="{StaticResource PetInfoTextStyle}"/>
-                                            <TextBlock Text="{Binding Sex}" Style="{StaticResource PetInfoTextStyle}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Возраст: " Style="{StaticResource PetInfoTextStyle}"/>
-                                            <TextBlock Text="{Binding Age}" Style="{StaticResource PetInfoTextStyle}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Порода: " Style="{StaticResource PetInfoTextStyle}"/>
-                                            <TextBlock Text="{Binding Breed}" Style="{StaticResource PetInfoTextStyle}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <Button Grid.Column="3" Height="32" Content="Узнать больше" Width="152" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" >
-                                        <Button.Resources>
-                                            <Style TargetType="{x:Type Border}">
-                                                <Setter Property="CornerRadius" Value="10"/>
-                                            </Style>
-                                        </Button.Resources>
-                                    </Button>
 
-                                </Grid>
-                            </Border>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="ContentPresenter">
-                        <Setter Property="Margin" Value="0,16,0,16"/>
-                        <!-- Adjust the margin as needed -->
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-            </ItemsControl>
-        </ScrollViewer>
-
-        <Button Grid.Column="1" Height="48" Content="Добавить нового пациента" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Bottom" Foreground="White" Margin="336,0,64,54" Grid.Row="1" Click="AddNewPet_Click" >
+        <Button Grid.Column="1" Height="48" Content="Добавить нового пациента" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Top" Foreground="White" Margin="64,740,64,0" Grid.Row="1" Click="AddNewPet_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
+
         <Grid Grid.Column="1" 
                  Grid.Row="1" 
                  VerticalAlignment="Top"
                  HorizontalAlignment="Stretch"
-                 Margin="336,64,64,0" 
-                 Height="48">
+                 Margin="336,85,64,0" 
+                 Height="160">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="17"/>
             </Grid.ColumnDefinitions>
             <Border
                 Grid.Column="0"
                  Grid.Row="1" 
                  VerticalAlignment="Top"
-                 Height="48" Background="White" Grid.ColumnSpan="2">
+                 Height="155" Background="White" Grid.ColumnSpan="4">
                 <Border.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -315,44 +251,20 @@
                 </Border.Resources>
             </Border>
 
-            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о владельце"/></TextBlock>
+            <TextBlock IsHitTestVisible="False"  HorizontalAlignment="Left" Margin="10,20,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="20" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о владельце"/></TextBlock>
 
-            <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Grid>
-
-        <Grid Grid.Column="1" 
-                 Grid.Row="1" 
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Stretch"
-                 Margin="336,128,64,0" 
-                 Height="48">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Border
-                Grid.Column="0"
-                 Grid.Row="1" 
-                 VerticalAlignment="Top"
-                 Height="48" Background="White" Grid.ColumnSpan="2">
-                <Border.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-
-                </Border.Resources>
-            </Border>
-
-            <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" Grid.Column="0"><Run Language="ru-ru" Text="Основная информация о владельце"/></TextBlock>
-
-            <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
+            <Button Grid.Column="2" 
+                Height="41" 
+                Width="207" 
+                Content="Редактировать" 
+                Background="LightSeaGreen" 
+                FontSize="15" 
+                FontFamily="./Resources/montserrat-regular.ttf" 
+                BorderBrush="LightSeaGreen" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Foreground="White" 
+                 Margin="0,100,0,0" Click="Button_Click_3">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -362,8 +274,245 @@
         </Grid>
 
 
+        <Grid Grid.Column="1" 
+      Grid.Row="1" 
+      VerticalAlignment="Top"
+      HorizontalAlignment="Stretch"
+      Margin="64,310,64,0" 
+      Height="95">
 
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="330*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+            VerticalAlignment="Center"
+            Height="90" 
+            Background="White" 
+            Grid.ColumnSpan="4"
+            Margin="0,0,0,10">
+                <Border.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Border.Resources>
+            </Border>
+
+            <TextBlock IsHitTestVisible="False" 
+              
+               HorizontalAlignment="Left" 
+               Margin="10,20,0,0" 
+               Foreground="Black" 
+               FontFamily="./Resources/montserrat-regular.ttf" 
+               FontSize="20" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="2">
+        <Run Language="ru-ru" Text="История здоровья"/>
+            </TextBlock>
+
+            <Button Grid.Column="2" 
+            Height="41" 
+            Width="207" 
+            Content="Редактировать" 
+            Background="LightSeaGreen" 
+            FontSize="15" 
+            FontFamily="./Resources/montserrat-regular.ttf" 
+            BorderBrush="LightSeaGreen" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Foreground="White" 
+             Margin="0,20,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" 
+        Grid.Row="1" 
+        VerticalAlignment="Top"
+        HorizontalAlignment="Stretch"
+        Margin="64,420,64,0" 
+        Height="95">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="330*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+          VerticalAlignment="Center"
+          Height="90" 
+          Background="White" 
+          Grid.ColumnSpan="4"
+          Margin="0,0,0,10">
+                <Border.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Border.Resources>
+            </Border>
+
+            <TextBlock IsHitTestVisible="False" 
+        
+             HorizontalAlignment="Left" 
+             Margin="10,20,0,0" 
+             Foreground="Black" 
+             FontFamily="./Resources/montserrat-regular.ttf" 
+             FontSize="20" 
+             Grid.Column="0" 
+             Grid.ColumnSpan="2">
+      <Run Language="ru-ru" Text="Текущее состояние здоровья"/>
+            </TextBlock>
+
+            <Button Grid.Column="2" 
+          Height="41" 
+          Width="207" 
+          Content="Редактировать" 
+          Background="LightSeaGreen" 
+          FontSize="15" 
+          FontFamily="./Resources/montserrat-regular.ttf" 
+          BorderBrush="LightSeaGreen" 
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Top" 
+          Foreground="White" 
+           Margin="0,20,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" 
+          Grid.Row="1" 
+          VerticalAlignment="Top"
+          HorizontalAlignment="Stretch"
+          Margin="64,530,64,0" 
+          Height="95">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="330*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+            VerticalAlignment="Center"
+            Height="90" 
+            Background="White" 
+            Grid.ColumnSpan="4"
+            Margin="0,0,0,10">
+                        <Border.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Border.Resources>
+                    </Border>
+
+                    <TextBlock IsHitTestVisible="False" 
+  
+               HorizontalAlignment="Left" 
+               Margin="10,20,0,0" 
+               Foreground="Black" 
+               FontFamily="./Resources/montserrat-regular.ttf" 
+               FontSize="20" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="2">
+        <Run Language="ru-ru" Text="Диагностические данные"/>
+            </TextBlock>
+
+            <Button Grid.Column="2" 
+            Height="41" 
+            Width="207" 
+            Content="Редактировать" 
+            Background="LightSeaGreen" 
+            FontSize="15" 
+            FontFamily="./Resources/montserrat-regular.ttf" 
+            BorderBrush="LightSeaGreen" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Foreground="White" 
+             Margin="0,20,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" 
+      Grid.Row="1" 
+      VerticalAlignment="Top"
+      HorizontalAlignment="Stretch"
+      Margin="64,640,64,0" 
+      Height="95">
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="133*"/>
+                    <ColumnDefinition Width="330*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="17"/>
+                </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+        VerticalAlignment="Center"
+        Height="90" 
+        Background="White" 
+        Grid.ColumnSpan="4"
+        Margin="0,0,0,10">
+                <Border.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Border.Resources>
+            </Border>
+
+            <TextBlock IsHitTestVisible="False" 
+  
+       HorizontalAlignment="Left" 
+       Margin="10,20,0,0" 
+       Foreground="Black" 
+       FontFamily="./Resources/montserrat-regular.ttf" 
+       FontSize="20" 
+       Grid.Column="0" 
+        Grid.ColumnSpan="2">
+    <Run Language="ru-ru" Text="План лечения"/>
+                </TextBlock>
+
+            <Button Grid.Column="2" 
+        Height="41" 
+        Width="207" 
+        Content="Редактировать" 
+        Background="LightSeaGreen" 
+        FontSize="15" 
+        FontFamily="./Resources/montserrat-regular.ttf" 
+        BorderBrush="LightSeaGreen" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Top" 
+        Foreground="White" 
+         Margin="0,20,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
 
     </Grid>
 </Window>
