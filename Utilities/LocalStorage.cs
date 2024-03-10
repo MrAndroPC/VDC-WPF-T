@@ -10,7 +10,7 @@ namespace VDC_WPF_T.Utilities
 
     public static class LocalStorage
     {
-        private static string filePath = "pets.json"; 
+        private static string filePath = $"{Path.GetTempPath()}\\VDC\\pets.json"; 
 
         public static void Save(Pet pet)
         {

@@ -27,9 +27,9 @@ namespace VDC_WPF_T
     public partial class MainWindow : Window
     {
 
-        internal List<Pet> Pets { get; set; }
+        internal ObservableCollection<Pet> Pets { get; set; }
 
-        internal List<Pet> FilteredPets {  get; set; }
+        internal ObservableCollection<Pet> FilteredPets {  get; set; }
 
 
         public MainWindow()
@@ -39,7 +39,7 @@ namespace VDC_WPF_T
 
             
 
-            Pets = new List<Pet>
+            Pets = new ObservableCollection<Pet>
         {
             new Pet { Id = 1, Name = "Я на паре", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://m.media-amazon.com/images/I/512UWQf8s9L._AC_UF1000,1000_QL80_.jpg") },
             // new Pet { Id = 1, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Chipi-chipi-chapa-chapa-cat.mp4")},
@@ -56,10 +56,11 @@ namespace VDC_WPF_T
             // Set the ItemsSource of the ListBox to the Pets collection
            
 
-            LocalStorage.SaveAll(Pets);
-            List<Pet> loadedPets = LocalStorage.LoadAll();
+            LocalStorage.SaveAll(Pets.ToList());
+            Pets.Clear();
+            Pets = new ObservableCollection<Pet>(LocalStorage.LoadAll());
 
-            TestList.ItemsSource = loadedPets;
+            TestList.ItemsSource = Pets;
 
         }
         private void gif_MediaEnded(object sender, RoutedEventArgs e)
@@ -91,7 +92,7 @@ namespace VDC_WPF_T
             }
         }
 
-        private List<Pet> FilterPets(string SearchTerm)
+        private ObservableCollection<Pet> FilterPets(string SearchTerm)
         {
             if (SearchTerm == "Введите имя пациента")
             {
@@ -101,7 +102,7 @@ namespace VDC_WPF_T
             else
             {
                 string searchTermLower = SearchTerm.ToLower();
-                FilteredPets = new List<Pet>(Pets.Where(p => p.Name.ToLower().Contains(searchTermLower)));
+                FilteredPets = new ObservableCollection<Pet>(Pets.Where(p => p.Name.ToLower().Contains(searchTermLower)));
                 return FilteredPets;
             }
             
