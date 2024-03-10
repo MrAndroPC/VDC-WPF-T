@@ -14,4 +14,16 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\prod\Prilo\VDC-WPF-T\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\prod\Prilo\VDC-WPF-T\.editorconfig" />
+  </ItemGroup>
+
 </Project>

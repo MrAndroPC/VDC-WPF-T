@@ -91,5 +91,11 @@ namespace VDC_WPF_T
                 pet.PicSource = new Uri(openFile.FileName, UriKind.Absolute);
 
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            EditPatientInfoWindow editWindow = new EditPatientInfoWindow(); 
+            editWindow.Show();
+        }
     }
 }

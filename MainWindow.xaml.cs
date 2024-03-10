@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VDC_WPF_T.Utilities;
 
 
 namespace VDC_WPF_T
@@ -36,6 +37,7 @@ namespace VDC_WPF_T
             DataContext = this;
             InitializeComponent();
 
+            
 
             Pets = new ObservableCollection<Pet>
         {
@@ -52,9 +54,13 @@ namespace VDC_WPF_T
         };
 
             // Set the ItemsSource of the ListBox to the Pets collection
+           
+
+            LocalStorage.SaveAll(Pets.ToList());
+            Pets.Clear();
+            Pets = new ObservableCollection<Pet>(LocalStorage.LoadAll());
+
             TestList.ItemsSource = Pets;
-
-
 
         }
         private void gif_MediaEnded(object sender, RoutedEventArgs e)
