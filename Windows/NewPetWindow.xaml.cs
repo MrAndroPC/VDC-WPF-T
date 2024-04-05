@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using VDC_WPF_T.Windows;
 
 
 namespace VDC_WPF_T
@@ -96,6 +97,20 @@ namespace VDC_WPF_T
         {
             EditPatientInfoWindow editWindow = new EditPatientInfoWindow(); 
             editWindow.Show();
+        }
+
+        private void EditHistory_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxForEditInfo npw = new TextBoxForEditInfo();
+            npw.EditHeader("История здоровья");
+            npw.ShowDialog();
+        }
+
+        private void EditHealthState_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxForEditInfo npw = new TextBoxForEditInfo();
+            npw.EditHeader("Текущее состояние здоровья");
+            npw.ShowDialog();
         }
     }
 }

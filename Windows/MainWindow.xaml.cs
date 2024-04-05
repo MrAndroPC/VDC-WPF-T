@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VDC_WPF_T.Utilities;
+using VDC_WPF_T.Windows;
 
 
 namespace VDC_WPF_T
@@ -41,10 +42,10 @@ namespace VDC_WPF_T
 
             Pets = new ObservableCollection<Pet>
         {
-            new Pet { Id = 1, Name = "Я на паре", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://m.media-amazon.com/images/I/512UWQf8s9L._AC_UF1000,1000_QL80_.jpg") },
-            new Pet { Id = 2, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Chipi-chipi-chapa-chapa-cat.mp4")},
-            new Pet { Id = 3, Name = "А???", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/10/7289868698381290754-6540a9d3d8f22.mp4") },
-            new Pet { Id = 4, Name = "Я, когда преподу не передали автоматы", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Dramatic-Kitten-Meme-Template-Screaming-Cat-Meme.mp4") },
+            //new Pet { Id = 1, Name = "Я на паре", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://m.media-amazon.com/images/I/512UWQf8s9L._AC_UF1000,1000_QL80_.jpg") },
+            //new Pet { Id = 2, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Chipi-chipi-chapa-chapa-cat.mp4")},
+            //new Pet { Id = 3, Name = "А???", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = 3, Breed = "X3", PicSource = new Uri("https://media.mymemevideos.com/2023/10/7289868698381290754-6540a9d3d8f22.mp4") },
+            //new Pet { Id = 4, Name = "Я, когда преподу не передали автоматы", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri("https://media.mymemevideos.com/2023/12/Dramatic-Kitten-Meme-Template-Screaming-Cat-Meme.mp4") },
             new Pet { Id = 5, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
             new Pet { Id = 6, Name = "Bob", Contacts = "123-456-7890", Type = "Dog", Sex = "Male", Age = 3, Breed = "Labrador", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
             new Pet { Id = 7, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = 5, Breed = "Siamese", PicSource = new Uri(@"C:\Users\sared\Downloads\pepefrg-44.gif\") },
@@ -99,6 +100,7 @@ namespace VDC_WPF_T
         {
             if (sender is Button)
             {
+
                 NewPetWindow npw = new NewPetWindow();
                 npw.ShowDialog();
             }

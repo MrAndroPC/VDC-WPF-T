@@ -1,0 +1,64 @@
+﻿<Window x:Class="VDC_WPF_T.Windows.TextBoxForEditInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VDC_WPF_T.Windows"
+        mc:Ignorable="d"
+        Title="TextBoxForEditInfo" Height="450" Width="559">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+            <TextBlock x:Name="NameBlock" Text="Основная информация о пациенте:" FontSize="20"/>
+        </StackPanel>
+
+        <TextBox Grid.Row="1" Margin="20" TextWrapping="Wrap" AcceptsReturn="True" MaxWidth="520" >
+
+            </TextBox>
+      
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+            <Button Grid.Column="2" 
+        Height="38" 
+        Width="190" 
+        Content="Добавить" 
+        Background="LightSeaGreen" 
+        FontSize="15" 
+        FontFamily="./Resources/montserrat-regular.ttf" 
+        BorderBrush="LightSeaGreen" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Top" 
+        Foreground="White" 
+         Margin="0,10,0,0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="2" 
+        Height="38" 
+        Width="190" 
+        Content="Удалить" 
+        Background="#9A9A9A" 
+        FontSize="15" 
+        FontFamily="./Resources/montserrat-regular.ttf" 
+        BorderBrush="#9A9A9A" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Top" 
+        Foreground="White" 
+         Margin="20,10,0,10">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

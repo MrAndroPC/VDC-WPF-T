@@ -325,7 +325,7 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Top" 
             Foreground="White" 
-             Margin="0,20,0,0">
+             Margin="0,20,0,0" Click="EditHistory_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -385,7 +385,7 @@
           HorizontalAlignment="Center" 
           VerticalAlignment="Top" 
           Foreground="White" 
-           Margin="0,20,0,0">
+           Margin="0,20,0,0" Click="EditHealthState_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>

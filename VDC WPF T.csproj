@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="PetWindow.xaml.cs">
+    <Compile Update="Windows\PetWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
