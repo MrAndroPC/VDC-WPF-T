@@ -1,18 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using VDC_WPF_T.Windows;
 
 
@@ -23,32 +14,29 @@ namespace VDC_WPF_T
     /// </summary>
     public partial class NewPetWindow : Window
     {
-/*        private Uri _mediaUri;
+        /*        private Uri _mediaUri;
 
-        public Uri MediaUri
-        {
-            get { return _mediaUri; }
-            set
-            {
-                _mediaUri = value;
-                OnPropertyChanged(nameof(MediaUri)); // Notify property change
-            }
-        }
+                public Uri MediaUri
+                {
+                    get { return _mediaUri; }
+                    set
+                    {
+                        _mediaUri = value;
+                        OnPropertyChanged(nameof(MediaUri)); // Notify property change
+                    }
+                }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+                public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-*/
-        private Pet pet = new Pet() 
-        { 
-            PicSource = new Uri(@"C:\Users\sared\Downloads\Ellipse 1.png", UriKind.Absolute)
-        };
+                protected virtual void OnPropertyChanged(string propertyName)
+                {
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                }
+        */
+        private Pet pet = new Pet();
         public NewPetWindow()
         {
-//            test_pet.PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif";
+            //            test_pet.PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif";
             DataContext = pet;
             InitializeComponent();
         }
@@ -60,10 +48,6 @@ namespace VDC_WPF_T
         }
 
 
-        private void Button_Click()
-        {
-
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -74,8 +58,9 @@ namespace VDC_WPF_T
         {
             if (sender is Button)
             {
-                NewPetWindow npw = new NewPetWindow();
-                npw.ShowDialog();
+
+                MessageBox.Show(pet.Name + pet.Contacts + pet.Type + pet.Sex + pet.Age + pet.Breed + pet.Weight + pet.History + pet.HealthState + pet.Diagnostic + pet.TreatmentPlan + pet.Num_mic);
+                Close();
             }
         }
 
@@ -95,22 +80,72 @@ namespace VDC_WPF_T
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            EditPatientInfoWindow editWindow = new EditPatientInfoWindow(); 
-            editWindow.Show();
+            EditPatientInfoWindow npw = new EditPatientInfoWindow(new ObservableCollection<string> { pet.Name, pet.Contacts, pet.Type, pet.Sex, pet.Age, pet.Breed, pet.Weight, pet.Num_mic } );
+            npw.ShowDialog();
+            if (npw.DialogResult == true)
+            {
+
+
+                ObservableCollection<string> resultData = npw.ResultData;
+                pet.Name = resultData[0];
+                pet.Contacts = resultData[1];
+                pet.Type = resultData[2];
+                pet.Sex = resultData[3];
+                pet.Age = resultData[4];
+                pet.Breed = resultData[5];
+                pet.Weight = resultData[6];
+                pet.Num_mic = resultData[7];
+            }
         }
 
         private void EditHistory_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxForEditInfo npw = new TextBoxForEditInfo();
-            npw.EditHeader("История здоровья");
+            TextBoxForEditInfo npw = new TextBoxForEditInfo("История здоровья", pet.History);
             npw.ShowDialog();
+            if (npw.DialogResult == true)
+            {
+
+                string resultData = npw.ResultData;
+                pet.History = resultData;
+            }
         }
 
         private void EditHealthState_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxForEditInfo npw = new TextBoxForEditInfo();
-            npw.EditHeader("Текущее состояние здоровья");
+            TextBoxForEditInfo npw = new TextBoxForEditInfo("Текущее состояние здоровья", pet.HealthState);
             npw.ShowDialog();
+            if (npw.DialogResult == true)
+            {
+
+                string resultData = npw.ResultData;
+                pet.HealthState = resultData;
+            }
+        }
+
+        private void EditDiagnostic_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxForEditInfo npw = new TextBoxForEditInfo("Диагностические данные", pet.Diagnostic);
+            npw.ShowDialog();
+            if (npw.DialogResult == true)
+            {
+
+                string resultData = npw.ResultData;
+                pet.Diagnostic = resultData;
+            }
+        }
+
+        private void EditTreatmentPlan_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxForEditInfo npw = new TextBoxForEditInfo("План лечения", pet.TreatmentPlan);
+            npw.ShowDialog();
+            if (npw.DialogResult == true)
+            {
+
+                string resultData = npw.ResultData;
+                pet.TreatmentPlan = resultData;
+   
+
+    }
         }
     }
 }

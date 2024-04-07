@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace VDC_WPF_T.Windows
 {
@@ -19,14 +20,35 @@ namespace VDC_WPF_T.Windows
     /// </summary>
     public partial class TextBoxForEditInfo : Window
     {
-        public TextBoxForEditInfo()
+        public string ResultData { get; private set; }
+        public TextBoxForEditInfo(string header, string content)
         {
             InitializeComponent();
+            NameBlock.Text = header;
+            InfoTextBox.Text = content;
         }
 
-        public void EditHeader (string text)
+        public void SetResultData(string data)
         {
-            NameBlock.Text = text;
+            ResultData = data;
+        }
+
+        void SaveDataAndClose()
+        {
+            SetResultData(InfoTextBox.Text);
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            SaveDataAndClose();
+            
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
