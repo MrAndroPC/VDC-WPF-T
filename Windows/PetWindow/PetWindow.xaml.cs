@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using VDC_WPF_T.Windows.PetWindow.HealthState;
 
 namespace VDC_WPF_T
 {
@@ -50,11 +50,10 @@ namespace VDC_WPF_T
         public PetWindow(Pet pet)
         {
             _pet = pet;
-//            test_pet.PicSource = @"C:\Users\sared\Downloads\pepefrg-44.gif";
             DataContext = this;
             InitializeComponent();
         }
-
+       
         private void gif_MediaEnded(object sender, RoutedEventArgs e)
         {
             ((MediaElement)sender).Position = new TimeSpan(0, 0, 1);
@@ -83,7 +82,8 @@ namespace VDC_WPF_T
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            HealthState npw = new HealthState(_pet);
+            npw.ShowDialog();
         }
 
         private void AddPic_MouseUp(object sender, MouseButtonEventArgs e)

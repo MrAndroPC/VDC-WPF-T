@@ -251,7 +251,7 @@
                     <Run Language="ru-ru" Text="Почта:"/>
                     <Hyperlink Click="CopyToClipboard" >
                         <Run Text="{Binding Email}" x:Name="emailText"/>
-                    </Hyperlink> 
+                    </Hyperlink>
                 </TextBlock>
                 <Popup x:Name="popup" StaysOpen="False" IsHitTestVisible="False" AllowsTransparency="True" Opacity="1" PlacementTarget="{Binding ElementName=emailText}" Placement="Bottom" PopupAnimation="Fade">
                     <Border Background="#BFB8B8B8" CornerRadius="10" Padding="10">
@@ -357,13 +357,13 @@
                         </Border.Resources>
                     </Border>
 
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20" Grid.RowSpan="2">
+                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="20,20,0,20">
                         <TextBlock IsHitTestVisible="False" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="20"  d:IsLocked="True">
                     <Run Language="ru-ru" Text="История здоровья:"/>
                         </TextBlock>
                     </StackPanel>
 
-                    <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" d:IsLocked="True" >
+                    <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>

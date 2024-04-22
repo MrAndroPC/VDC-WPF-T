@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Windows\PetWindow.xaml.cs">
+    <Compile Update="Windows\PetWindow\PetWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -24,6 +24,11 @@
 
   <ItemGroup>
     <None Include="D:\prod\Prilo\VDC-WPF-T\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Windows\PetWindow\History\" />
+    <Folder Include="Windows\PetWindow\TreatmentPlan\" />
   </ItemGroup>
 
 </Project>
