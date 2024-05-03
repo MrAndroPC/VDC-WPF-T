@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T"
         mc:Ignorable="d"
-        Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="900">
+        Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="900" WindowState="Maximized">
 
 
     <Window.Resources>

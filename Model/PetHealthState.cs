@@ -6,8 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VDC_WPF_T.Model
-{
     class PetHealthState : Pet
     {
         private ObservableCollection<string> vaccinationRecords;
@@ -16,6 +14,14 @@ namespace VDC_WPF_T.Model
         private ObservableCollection<string> surgicalInterventions;
         private ObservableCollection<string> lastVisit;
 
+        
+        public PetHealthState() : base(){
+            VaccinationRecords = vaccinationRecords;
+            MedicationHistory = medicationHistory;
+            Allergies = allergies;
+            SurgicalInterventions = surgicalInterventions;
+            LastVisit = lastVisit;
+        }
         public ObservableCollection<string> VaccinationRecords
         {
             get { return vaccinationRecords; }
@@ -81,7 +87,7 @@ namespace VDC_WPF_T.Model
             }
         }
 
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -91,4 +97,4 @@ namespace VDC_WPF_T.Model
 
         }
     }
-}
+
