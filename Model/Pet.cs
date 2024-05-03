@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 public class Pet : INotifyPropertyChanged
@@ -17,6 +18,7 @@ public class Pet : INotifyPropertyChanged
     private string diagnostic;
     private string treatmentPlan;
     private string num_mic;
+    private ObservableCollection<string> vaccinationRecords;
 
 
     public int Id

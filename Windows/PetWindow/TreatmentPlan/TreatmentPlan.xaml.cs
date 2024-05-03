@@ -13,17 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VDC_WPF_T.Model;
 
-namespace VDC_WPF_T.Windows.PetWindow.HealthState
+namespace VDC_WPF_T.Windows.PetWindow.TreatmentPlan
 {
     /// <summary>
     /// Логика взаимодействия для HealthState.xaml
     /// </summary>
-    public partial class HealthState : Window
+    public partial class TreatmentPlan : Window
     {
         public Pet _pet { get; set; } = new Pet();
-        public HealthState(Pet pet)
+        public PetTreatmentPlan PTP { get; set; } = new PetTreatmentPlan();
+
+        public TreatmentPlan(Pet pet)
         {
             _pet = pet;
+            if (PTP != null)
+            {
+                //                _petState.MedicationHistory = Request.......
+                PTP.TreatmentRecords.Add(new TreatmentRecord(DateTime.Now.AddDays(-2), "Vaccination", "Rabies vaccine"));
+                PTP.TreatmentRecords.Add(new TreatmentRecord(DateTime.Now.AddDays(-1), "Check-up", "General health check"));
+                PTP.TreatmentRecords.Add(new TreatmentRecord(DateTime.Now, "Medication", "Administered medication for infection"));
+            }
             DataContext = this;
             InitializeComponent();
         }
