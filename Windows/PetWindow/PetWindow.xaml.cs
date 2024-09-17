@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VDC_WPF_T.Windows.PetWindow.HealthState;
+using VDC_WPF_T.Windows.PetWindow.TreatmentPlan;
 
 namespace VDC_WPF_T
 {
@@ -83,6 +84,11 @@ namespace VDC_WPF_T
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             HealthState npw = new HealthState(_pet);
+            npw.ShowDialog();
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            TreatmentPlan npw = new TreatmentPlan(_pet);
             npw.ShowDialog();
         }
 

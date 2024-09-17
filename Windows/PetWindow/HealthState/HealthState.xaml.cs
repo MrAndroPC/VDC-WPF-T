@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using VDC_WPF_T.Utilities;
 using VDC_WPF_T.Windows.PetWindow.Diagnostic;
-
+using VDC_WPF_T.Model;
 
 namespace VDC_WPF_T.Windows.PetWindow.HealthState
 {
