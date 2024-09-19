@@ -240,11 +240,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Ellipse Height="100" Width="100" Grid.Column="0" Stroke="White" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <Ellipse.Fill>
-                                            <VisualBrush>
-                                                <VisualBrush.Visual>
-                                                    <MediaElement x:Name="gif" MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding PicSource}" LoadedBehavior="Play" Volume="0.001"/>
-                                                </VisualBrush.Visual>
-                                            </VisualBrush>
+                                            <ImageBrush ImageSource="{Binding PicSource}" />
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <StackPanel Grid.Column="1">
@@ -282,7 +278,6 @@
                 <ItemsControl.ItemContainerStyle>
                     <Style TargetType="ContentPresenter">
                         <Setter Property="Margin" Value="0,16,0,16"/>
-                        <!-- Adjust the margin as needed -->
                     </Style>
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>

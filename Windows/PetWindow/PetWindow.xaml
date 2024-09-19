@@ -206,11 +206,7 @@
 
         <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,64,0,0" MouseUp="AddPic_MouseUp">
             <Ellipse.Fill>
-                <VisualBrush>
-                    <VisualBrush.Visual>
-                        <MediaElement MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="{Binding _pet.PicSource }" LoadedBehavior="Play"/>
-                    </VisualBrush.Visual>
-                </VisualBrush>
+                <ImageBrush ImageSource="{Binding _pet.PicSource}" />
             </Ellipse.Fill>
         </Ellipse>
         <Grid Grid.Column="1" 
