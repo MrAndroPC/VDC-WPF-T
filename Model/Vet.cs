@@ -13,6 +13,8 @@ namespace VDC_WPF_T.Model
     {
         private int id;
         private string name;
+        private string surname;
+        private string patronymic;
         private string email;
         private int phoneNumber;
         private Uri picSource;
@@ -39,6 +41,30 @@ namespace VDC_WPF_T.Model
                 {
                     name = value;
                     OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
+        public string Surname
+        {
+            get { return surname; }
+            set
+            {
+                if (surname != value)
+                {
+                    surname = value;
+                    OnPropertyChanged(nameof(Surname));
+                }
+            }
+        }
+        public string Patronymic
+        {
+            get { return patronymic; }
+            set
+            {
+                if (patronymic != value)
+                {
+                    patronymic = value;
+                    OnPropertyChanged(nameof(Patronymic));
                 }
             }
         }

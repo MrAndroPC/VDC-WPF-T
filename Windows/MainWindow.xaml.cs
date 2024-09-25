@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VDC_WPF_T.Utilities;
 using VDC_WPF_T.Windows;
+using VDC_WPF_T.Windows.AuthWindow;
 
 
 namespace VDC_WPF_T
@@ -35,12 +36,17 @@ namespace VDC_WPF_T
 
         public MainWindow()
         {
-            DataContext = this;
-            InitializeComponent();
+            var authWindow = new AuthWindow();
+            bool? authResult = authWindow.ShowDialog();
 
-            
+            if (authResult == true)
+            {
+                DataContext = this;
+                InitializeComponent();
 
-            Pets = new ObservableCollection<Pet>
+
+
+                Pets = new ObservableCollection<Pet>
         {
             new Pet { Id = 1, Name = "Я на паре", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = "3", Breed = "X3", PicSource = new Uri("https://cataas.com/cat") },
             new Pet { Id = 2, Name = "Чипи чипи чапа чапа", Contacts = "123-456-7890", Type = "Cat", Sex = "Male", Age = "3", Breed = "X3", PicSource = new Uri("https://cataas.com/cat?type=square")},
@@ -54,15 +60,21 @@ namespace VDC_WPF_T
             new Pet { Id = 11, Name = "Jim", Contacts = "456-789-0123", Type = "Cat", Sex = "Male", Age = "5", Breed = "Siamese", Weight="20кг", PicSource = new Uri("https://cataas.com/cat?type=square"), History = "history", Diagnostic = "diag", HealthState = "health", TreatmentPlan = "rmkler", Num_mic="1" },
         };
 
-            // Set the ItemsSource of the ListBox to the Pets collection
-           
+                // Set the ItemsSource of the ListBox to the Pets collection
 
-            LocalStorage.SaveAll(Pets.ToList());
-            Pets.Clear();
-            Pets = new ObservableCollection<Pet>(LocalStorage.LoadAll());
 
-            TestList.ItemsSource = Pets;
+                LocalStorage.SaveAll(Pets.ToList());
+                Pets.Clear();
+                Pets = new ObservableCollection<Pet>(LocalStorage.LoadAll());
 
+                TestList.ItemsSource = Pets;
+
+            }
+            else
+            {
+                // Handle failure or cancelation logic.
+                Application.Current.Shutdown();
+            }
         }
         private void gif_MediaEnded(object sender, RoutedEventArgs e)
         {

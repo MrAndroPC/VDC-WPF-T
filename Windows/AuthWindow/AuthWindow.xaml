@@ -23,43 +23,44 @@
         <StackPanel Grid.Row="1" Margin="15">
             <!-- Name -->
             <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal">
+                <DockPanel>
                     <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Почта" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" />
-                    <TextBox x:Name="emailTextBox" VerticalAlignment="Top" Height="37" Width="250" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535">
+                    <TextBox x:Name="emailTextBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Background" Value="Transparent" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                </StackPanel>
+                </DockPanel>
             </Border>
 
             <!-- Email -->
             <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal">
+                <DockPanel>
                     <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Пароль" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" />
-                    <TextBox x:Name="passwordTextBox" VerticalAlignment="Top" Height="37" Width="250" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535">
+                    <TextBox x:Name="passwordTextBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type TextBox}">
                                 <Setter Property="BorderBrush" Value="White" />
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                </StackPanel>
+                </DockPanel>
             </Border>
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <Button Height="38" Width="120" Content="Login" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0">
+            <Button Height="38" Width="120" Content="Login" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0" Click="LoginButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Height="38" Width="120" Content="Cancel" Background="#9A9A9A" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="20,10,0,0">
+            <Button Height="38" Width="120" Content="Cancel" Background="#9A9A9A" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="20,10,0,0" Click="CancelButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
