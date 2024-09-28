@@ -30,8 +30,8 @@ namespace VDC_WPF_T.Windows.AuthWindow
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string email = emailTextBox.Text;
-            string password = passwordTextBox.Text;
+            string email = emailInput.GetValue();
+            string password = passwordInput.GetValue();
 
             bool isAuthenticated = await AuthenticateUserAsync(email, password);
             if (isAuthenticated)

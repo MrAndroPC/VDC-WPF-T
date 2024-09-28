@@ -22,34 +22,8 @@
 
         <!-- Input Fields -->
         <StackPanel Grid.Row="1" Margin="15">
-            <!-- Name -->
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <DockPanel>
-                    <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Почта" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" />
-                    <TextBox x:Name="emailTextBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="Transparent" />
-                                <Setter Property="Background" Value="Transparent" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </DockPanel>
-            </Border>
-
-            <!-- Email -->
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <DockPanel>
-                    <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Пароль" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" />
-                    <TextBox x:Name="passwordTextBox" HorizontalAlignment="Stretch"  Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
-                        <TextBox.Resources>
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </DockPanel>
-            </Border>
+            <local:RegAuthInputControl Placeholder="Почта" x:Name="emailInput" />
+            <local:RegAuthInputControl Placeholder="Пароль" x:Name="passwordInput" IsPassword="True"/>
         </StackPanel>
 
         <!-- Buttons -->
