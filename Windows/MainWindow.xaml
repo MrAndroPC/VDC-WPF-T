@@ -303,7 +303,6 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="SearchTermTextBox"
                 Grid.Column="0" 
-                 Grid.Row="1" 
                  VerticalAlignment="Top"
                  Height="48"
                      Padding="10"

@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T.Windows.AuthWindow"
         mc:Ignorable="d"
-        Title="Авторизация" WindowStartupLocation="CenterScreen" Height="300" Width="400" ResizeMode="NoResize">
+        Title="Авторизация" WindowStartupLocation="CenterScreen" Height="Auto"  Width="400" ResizeMode="NoResize" SizeToContent="Height">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <TextBlock Text="Authentication" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" />
+            <TextBlock Text="Авторизация" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" />
         </StackPanel>
 
         <!-- Input Fields -->
@@ -40,7 +41,7 @@
             <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
                 <DockPanel>
                     <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Пароль" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15" />
-                    <TextBox x:Name="passwordTextBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
+                    <TextBox x:Name="passwordTextBox" HorizontalAlignment="Stretch"  Margin="5, 0, 10, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" Foreground="#FF353535" KeyDown="TextBox_KeyDown">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type TextBox}">
                                 <Setter Property="BorderBrush" Value="White" />
@@ -53,14 +54,14 @@
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <Button Height="38" Width="120" Content="Login" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0" Click="LoginButton_Click">
+            <Button Height="38" Width="120" Content="Войти" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0" Click="LoginButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Height="38" Width="120" Content="Cancel" Background="#9A9A9A" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="20,10,0,0" Click="CancelButton_Click">
+            <Button Height="38" Width="120" Content="Отмена" Background="#9A9A9A" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="20,10,0,0" Click="CancelButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
@@ -68,5 +69,14 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
+
+        <Button Grid.Row="3" Height="38" Width="250" Content="Создать аккаунт" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="0,10,0,10" Click="RegButton_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </Window>

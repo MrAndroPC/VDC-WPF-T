@@ -94,5 +94,10 @@ namespace VDC_WPF_T.Windows.AuthWindow
             }
         }
 
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            var regWindow = new RegWindow();
+            regWindow.ShowDialog();
+        }
     }
 }
