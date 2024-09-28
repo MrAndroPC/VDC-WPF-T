@@ -16,14 +16,14 @@ using static System.Collections.Specialized.BitVector32;
 using VDC_WPF_T.Utilities;
 using System.Net.Http.Json;
 
-namespace VDC_WPF_T.Windows.AuthWindow
+namespace VDC_WPF_T.Windows.RegWindow
 {
     /// <summary>
-    /// Логика взаимодействия для AuthWindow.xaml
+    /// Логика взаимодействия для RegWindow.xaml
     /// </summary>
-    public partial class AuthWindow : Window
+    public partial class RegWindow : Window
     {
-        public AuthWindow()
+        public RegWindow()
         {
             InitializeComponent();
         }
@@ -33,10 +33,10 @@ namespace VDC_WPF_T.Windows.AuthWindow
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
 
-            bool isAuthenticated = await AuthenticateUserAsync(email, password);
-            if (isAuthenticated)
+            bool isRegenticated = await RegenticateUserAsync(email, password);
+            if (isRegenticated)
             {
-                // Mark the authentication as successful.
+                // Mark the Regentication as successful.
                 this.DialogResult = true;
                 this.Close();
             }
@@ -53,12 +53,12 @@ namespace VDC_WPF_T.Windows.AuthWindow
         }
 
 
-        private async Task<bool> AuthenticateUserAsync(string email, string password)
+        private async Task<bool> RegenticateUserAsync(string email, string password)
         {
-            // Call your API for authentication here.
+            // Call your API for Regentication here.
             var client = new HttpClient();
             MessageBox.Show($"{email} {password}");
-            var response = await client.PostAsJsonAsync("https://dummyjson.com/auth/login",
+            var response = await client.PostAsJsonAsync("https://dummyjson.com/Reg/login",
                                                          new { Username = email, Password = password });
 
             if (response.IsSuccessStatusCode)
@@ -70,19 +70,7 @@ namespace VDC_WPF_T.Windows.AuthWindow
                 return true;
             }
 
-            UserSession t_userSession = new UserSession() { 
-                Id = 1,
-                Name = "TestN",
-                Surname = "TestS",
-                Patronymic = "TestP",
-                Email = email,
-                Phone = "8-(800)-555-35-35",
-                Role = "Tester",
-                Hospital = $"Hospital {"Test"}",
-                PicSource = new Uri("https://img.freepik.com/premium-photo/veterinarian-digital-avatar-generative-ai_934475-9224.jpg")
-            };
-            Session.CurrentUser = t_userSession;
-            return true;
+            return false;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
