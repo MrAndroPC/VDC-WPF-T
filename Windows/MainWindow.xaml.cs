@@ -112,8 +112,12 @@ namespace VDC_WPF_T
         {
             if (sender is Button)
             {
-
                 NewPetWindow npw = new NewPetWindow();
+                Visibility = Visibility.Hidden;
+                npw.Closed += (s, args) =>
+                {
+                    Visibility = Visibility.Visible;
+                };
                 npw.ShowDialog();
             }
         }

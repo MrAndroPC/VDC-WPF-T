@@ -70,7 +70,7 @@ namespace VDC_WPF_T.Windows.AuthWindow
                 return true;
             }
 
-            return false;
+            return true;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
