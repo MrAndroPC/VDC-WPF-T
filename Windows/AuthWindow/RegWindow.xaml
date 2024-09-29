@@ -1,34 +1,40 @@
-﻿<Window x:Class="VDC_WPF_T.Windows.AuthWindow.AuthWindow"
+﻿<Window x:Class="VDC_WPF_T.Windows.AuthWindow.RegWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T.Windows.AuthWindow"
         mc:Ignorable="d"
-        Title="Авторизация" WindowStartupLocation="CenterScreen" Height="Auto"  Width="400" ResizeMode="NoResize" SizeToContent="Height">
+        Title="Регистрация" WindowStartupLocation="CenterScreen"  Width="400" ResizeMode="NoResize" SizeToContent="Height">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <TextBlock Text="Авторизация" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" />
+            <TextBlock Text="Регистрация" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" />
         </StackPanel>
 
         <!-- Input Fields -->
         <StackPanel Grid.Row="1" Margin="15">
+            <local:RegAuthInputControl Placeholder="Фамилия" x:Name="surnameInput" />
+            <local:RegAuthInputControl Placeholder="Имя" x:Name="nameInput" />
+            <local:RegAuthInputControl Placeholder="Отчество" x:Name="patronymicInput" />
             <local:RegAuthInputControl Placeholder="Почта" x:Name="emailInput" />
+            <local:RegAuthInputControl Placeholder="Номер телефона" x:Name="phoneInput" />
+            <local:RegAuthInputControl Placeholder="Должность" x:Name="positionInput" />
+            <local:RegAuthInputControl Placeholder="Клиника" x:Name="clinicInput" />
             <local:RegAuthInputControl Placeholder="Пароль" x:Name="passwordInput" IsPassword="True"/>
+            <local:RegAuthInputControl Placeholder="Повторите пароль" x:Name="confirmPasswordInput" IsPassword="True"/>
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <Button Height="38" Width="120" Content="Войти" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0" Click="LoginButton_Click">
+            <Button Height="38" Width="160" Content="Зарегистрироваться" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" Foreground="White" Margin="0,10,0,0" Click="RegButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
@@ -43,14 +49,5 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
-
-        <Button Grid.Row="3" Height="38" Width="250" Content="Создать аккаунт" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="#9A9A9A" Foreground="White" Margin="0,10,0,10" Click="RegButton_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="8"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
     </Grid>
 </Window>

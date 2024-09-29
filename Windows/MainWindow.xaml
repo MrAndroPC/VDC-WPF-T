@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDC_WPF_T"
+        xmlns:utils="clr-namespace:VDC_WPF_T.Utilities"
         mc:Ignorable="d"
         Title="MainWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="600" WindowState="Maximized">
 
@@ -206,14 +207,14 @@
 
         <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,64,0,0">
             <Ellipse.Fill>
-                <VisualBrush>
-                    <VisualBrush.Visual>
-                        <MediaElement MediaEnded="gif_MediaEnded" UnloadedBehavior="Manual" Source="C:\Users\sared\Downloads\pepefrg-44.gif" LoadedBehavior="Play"/>
-                    </VisualBrush.Visual>
-                </VisualBrush>
+                <ImageBrush ImageSource="{Binding PicSource, Source={x:Static utils:Session.CurrentUser}}" />
             </Ellipse.Fill>
         </Ellipse>
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Margin="64,293,0,0" Grid.Row="1" Width="200" TextAlignment="Center"><Run Language="ru-ru" Text="Фамилия" /><LineBreak/><Run Language="ru-ru" Text="Имя"/><LineBreak/><Run Language="ru-ru" Text="Отчество"/></TextBlock>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Margin="64,293,0,0" Grid.Row="1" Width="200" TextAlignment="Center">
+            <Run Language="ru-ru" Text="{Binding Surname, Source={x:Static utils:Session.CurrentUser}}"/><LineBreak/>
+            <Run Language="ru-ru" Text="{Binding Name, Source={x:Static utils:Session.CurrentUser}}"/><LineBreak/>
+            <Run Language="ru-ru" Text="{Binding Patronymic, Source={x:Static utils:Session.CurrentUser}}"/><LineBreak/>
+        </TextBlock>
         <Rectangle Fill="Black" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Stroke="Black" Height="1" Margin="336,169,64,0"/>
         
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Center" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.Column="1" Margin="336,140,0,0" Grid.Row="1"><Run Language="ru-ru" Text="Мои п"/><Run Text="ациенты"/><Run Text=":"/></TextBlock>
@@ -302,7 +303,6 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="SearchTermTextBox"
                 Grid.Column="0" 
-                 Grid.Row="1" 
                  VerticalAlignment="Top"
                  Height="48"
                      Padding="10"
