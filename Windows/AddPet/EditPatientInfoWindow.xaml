@@ -1,13 +1,13 @@
 ﻿<Window x:Class="VDC_WPF_T.Windows.EditPatientInfoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EditPatientInfoWindow" WindowStartupLocation="CenterScreen" Height="620" Width="500" ResizeMode="NoResize">
+        Title="EditPatientInfoWindow" WindowStartupLocation="CenterScreen" Width="500" ResizeMode="NoResize">
 
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -20,7 +20,7 @@
             <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" >
                 <StackPanel Orientation="Horizontal" >
 
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Имя" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
+                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Кличка" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
                     <TextBox x:Name="name"  VerticalAlignment="Top" Height="37" Width="401" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
                         <TextBox.Resources>
 
@@ -32,20 +32,7 @@
                 </StackPanel>
             </Border>
 
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
 
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Контакты:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="contacts"  VerticalAlignment="Top" Height="37" Width="368" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="#00FFFFFF" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
 
             <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
                 <StackPanel Orientation="Horizontal" >

@@ -25,7 +25,6 @@ namespace VDC_WPF_T.Windows
         {
             InitializeComponent();
             name.Text = content[0];
-            contacts.Text = content[1];
             type.Text = content[2];
             sex.Text = content[3];
             age.Text = content[4];
@@ -42,7 +41,7 @@ namespace VDC_WPF_T.Windows
         void SaveDataAndClose()
         {
             ObservableCollection<string> data = new ObservableCollection<string>  {
-                name.Text, contacts.Text, type.Text, sex.Text, age.Text, breed.Text, weight.Text, num_mic.Text
+                name.Text, type.Text, sex.Text, age.Text, breed.Text, weight.Text, num_mic.Text
             };
             SetResultData(data);
 
