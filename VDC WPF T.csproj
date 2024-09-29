@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Windows\AuthWindow\RegWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\PetWindow\PetWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

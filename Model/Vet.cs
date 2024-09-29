@@ -9,14 +9,16 @@ using System.Collections.ObjectModel;
 
 namespace VDC_WPF_T.Model
 {
-    internal class Vet : INotifyPropertyChanged
+    public class Vet : INotifyPropertyChanged
     {
         private int id;
         private string name;
         private string surname;
         private string patronymic;
         private string email;
-        private int phoneNumber;
+        private string phone;
+        private string role;
+        private string hospital;
         private Uri picSource;
 
 
@@ -80,18 +82,44 @@ namespace VDC_WPF_T.Model
                 }
             }
         }
-        public int PhoneNumber
+        public string Phone
         {
-            get { return phoneNumber; }
+            get { return phone; }
             set
             {
-                if (phoneNumber != value)
+                if (phone != value)
                 {
-                    phoneNumber = value;
-                    OnPropertyChanged(nameof(PhoneNumber));
+                    phone = value;
+                    OnPropertyChanged(nameof(Phone));
                 }
             }
         }
+
+        public string Role
+        {
+            get { return role; }
+            set
+            {
+                if (role!= value)
+                {
+                    role = value;
+                    OnPropertyChanged(nameof(Role));
+                }
+            }
+        }
+        public string Hospital
+        {
+            get { return hospital; }
+            set
+            {
+                if (hospital!= value)
+                {
+                    hospital = value;
+                    OnPropertyChanged(nameof(Hospital));
+                }
+            }
+        }
+
         public Uri PicSource
         {
             get { return picSource; }

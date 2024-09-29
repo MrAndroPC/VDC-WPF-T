@@ -1,17 +1,18 @@
-public static class Session
+namespace VDC_WPF_T.Utilities
 {
-    public static UserSession CurrentUser { get; set; }
-}
-
-public class UserSession
-{
-    public int Id { get; set; }
-    public string Username { get; set; }
-    public string Email { get; set; }
-    public string AccessToken { get; set; }
-
-    public override string ToString()
+    public static class Session
     {
-        return $"Id: {Id}, Name: {Username}, Email: {Email}, Token: {AccessToken}";
+        public static UserSession CurrentUser { get; set; }
+    }
+
+    public class UserSession : VDC_WPF_T.Model.Vet // Session implements Vet model and stores additional info
+    {
+        public int Id { get; set; }
+        public string AccessToken { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name:{Surname} {Name} {Patronymic}, Email: {Email}, Hospital: {Hospital}, Role: {Role} ,Token: {AccessToken}";
+        }
     }
 }

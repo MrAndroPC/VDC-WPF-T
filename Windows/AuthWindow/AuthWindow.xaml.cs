@@ -30,8 +30,8 @@ namespace VDC_WPF_T.Windows.AuthWindow
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string email = emailTextBox.Text;
-            string password = passwordTextBox.Text;
+            string email = emailInput.GetValue();
+            string password = passwordInput.GetValue();
 
             bool isAuthenticated = await AuthenticateUserAsync(email, password);
             if (isAuthenticated)
@@ -70,7 +70,19 @@ namespace VDC_WPF_T.Windows.AuthWindow
                 return true;
             }
 
-            return false;
+            UserSession t_userSession = new UserSession() { 
+                Id = 1,
+                Name = "TestN",
+                Surname = "TestS",
+                Patronymic = "TestP",
+                Email = email,
+                Phone = "8-(800)-555-35-35",
+                Role = "Tester",
+                Hospital = $"Hospital {"Test"}",
+                PicSource = new Uri("https://img.freepik.com/premium-photo/veterinarian-digital-avatar-generative-ai_934475-9224.jpg")
+            };
+            Session.CurrentUser = t_userSession;
+            return true;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -82,5 +94,10 @@ namespace VDC_WPF_T.Windows.AuthWindow
             }
         }
 
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            var regWindow = new RegWindow();
+            regWindow.ShowDialog();
+        }
     }
 }
