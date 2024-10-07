@@ -49,7 +49,12 @@ namespace VDC_WPF_T
 
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -80,23 +85,9 @@ namespace VDC_WPF_T
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            EditPatientInfoWindow npw = new EditPatientInfoWindow(new ObservableCollection<string> { pet.Name, pet.Contacts, pet.Type, pet.Sex, pet.Age, pet.Breed, pet.Weight, pet.Num_mic } );
+            EditPatientInfoWindow npw = new EditPatientInfoWindow();
             npw.ShowDialog();
-            if (npw.DialogResult == true)
-            {
-
-
-                ObservableCollection<string> resultData = npw.ResultData;
-                pet.Name = resultData[0];
-                pet.Contacts = resultData[1];
-                pet.Type = resultData[2];
-                pet.Sex = resultData[3];
-                pet.Age = resultData[4];
-                pet.Breed = resultData[5];
-                pet.Weight = resultData[6];
-                pet.Num_mic = resultData[7];
-            }
-        }
+         }
 
         private void EditHistory_Click(object sender, RoutedEventArgs e)
         {

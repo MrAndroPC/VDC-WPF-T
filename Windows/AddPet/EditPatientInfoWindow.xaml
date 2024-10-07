@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:VDC_WPF_T.Windows.AddPet"
+        xmlns:authwins="clr-namespace:VDC_WPF_T.Windows.AuthWindow"
         Title="EditPatientInfoWindow" WindowStartupLocation="CenterScreen" Width="500" ResizeMode="NoResize" SizeToContent="Height">
 
 
@@ -17,114 +18,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="15" >
-
+            
             <local:OwnerSelectionControl/>
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" >
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Кличка" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="name"  VerticalAlignment="Top" Height="37" Width="401" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="#00FFFFFF" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Вид:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="type"  VerticalAlignment="Top" Height="37" Width="410" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="#00FFFFFF" />
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1"  Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"><Run Language="ru-ru" Text="Пол"/><Run Text=":"/></TextBlock>
-                    <TextBox x:Name="sex" VerticalAlignment="Top" Height="37" Width="410" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1"  Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Возраст:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="age"  VerticalAlignment="Top" Height="37" Width="380" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-           
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1"  Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Порода:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="breed" VerticalAlignment="Top" Height="37" Width="381" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-               
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1"  Margin="0, 15, 0, 0">
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Вес:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="weight" VerticalAlignment="Top" Height="37" Width="410" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-       
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
-
-            <Border CornerRadius="10" BorderBrush="LightGray" BorderThickness="1"  Margin="0, 15, 0, 0" >
-                <StackPanel Orientation="Horizontal" >
-
-                    <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Margin="10, 0, 0, 0" Text="Номер микрочипа:" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15"></TextBlock>
-                    <TextBox x:Name="num_mic" VerticalAlignment="Top" Height="37" Width="306" Margin="10, 0, 0, 0" Padding="10" VerticalContentAlignment="Center" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
-                        <TextBox.Resources>
-             
-                            <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="BorderBrush" Value="White"/>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                </StackPanel>
-            </Border>
+            <authwins:RegAuthInputControl Placeholder="Кличка" x:Name="nameInput"/>
+            <authwins:RegAuthInputControl Placeholder="Вид" x:Name="typeInput"/>
+            <authwins:RegAuthInputControl Placeholder="Пол" x:Name="sexInput"/>
+            <authwins:RegAuthInputControl Placeholder="Возраст" x:Name="ageInput"/>
+            <authwins:RegAuthInputControl Placeholder="Порода" x:Name="breedInput"/>
+            <authwins:RegAuthInputControl Placeholder="Вес" x:Name="weightInput"/>
+            <authwins:RegAuthInputControl Placeholder="Номер микрочипа" x:Name="numMicInput"/>
             
         </StackPanel>
 

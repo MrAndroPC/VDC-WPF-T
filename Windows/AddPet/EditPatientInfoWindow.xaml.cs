@@ -20,37 +20,14 @@ namespace VDC_WPF_T.Windows
     /// </summary>
     public partial class EditPatientInfoWindow : Window
     {
-        public ObservableCollection<string> ResultData { get; private set; }
-        public EditPatientInfoWindow(ObservableCollection<string> content)
+        public EditPatientInfoWindow()
         {
             InitializeComponent();
-            name.Text = content[0];
-            type.Text = content[2];
-            sex.Text = content[3];
-            age.Text = content[4];
-            breed.Text = content[5];
-            weight.Text = content[6];
-            num_mic.Text = content[7];
         }
 
-        public void SetResultData(ObservableCollection<string> data)
-        {
-            ResultData = data;
-        }
-
-        void SaveDataAndClose()
-        {
-            ObservableCollection<string> data = new ObservableCollection<string>  {
-                name.Text, type.Text, sex.Text, age.Text, breed.Text, weight.Text, num_mic.Text
-            };
-            SetResultData(data);
-
-        }
-        
-        private void Add_Click(object sender, RoutedEventArgs e)
+            private void Add_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
-            SaveDataAndClose();
 
         }
 

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VDC_WPF_T"
+        xmlns:local="clr-namespace:VDC_WPF_T.Windows.AddPet"
+        xmlns:authwins="clr-namespace:VDC_WPF_T.Windows.AuthWindow"
         mc:Ignorable="d"
         Title="NewPetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="900" WindowState="Maximized">
 
@@ -193,6 +194,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -205,8 +208,8 @@
 
         <Rectangle Grid.Row="0" Fill="LightSeaGreen" Grid.ColumnSpan="3"/>
         <TextBlock Grid.Row="0" Text="Ветеринарная диагностическая клиника &quot;Умка&quot;" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="20" FontFamily="./Resources/montserrat-regular.ttf" Grid.ColumnSpan="3" Foreground="White"/>
-
-        <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="64,64,0,0" MouseUp="AddPic_MouseUp">
+        
+        <Ellipse Height="200" Width="200" Grid.Row="1" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,112,0,0" MouseUp="AddPic_MouseUp">
             <Ellipse.Fill>
                 <VisualBrush>
                     <VisualBrush.Visual>
@@ -215,22 +218,88 @@
                 </VisualBrush>
             </Ellipse.Fill>
         </Ellipse>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,10">
+            <TextBlock Text="Основная информация о пациенте:" FontSize="36"/>
+        </StackPanel>
+        <Grid Grid.Column="1" 
+                 Grid.Row="1" 
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Stretch"
+                 Margin="336,85,64,0" 
+                 >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
+            <StackPanel Grid.Row="1" Margin="15" >
 
-        <Button Grid.Column="1" Height="48" Content="Добавить нового пациента" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Top" Foreground="White" Margin="64,740,64,0" Grid.Row="1" Click="AddNewPet_Click" >
+                <local:OwnerSelectionControl/>
+                <authwins:RegAuthInputControl Placeholder="Кличка" x:Name="nameInput"/>
+                <authwins:RegAuthInputControl Placeholder="Вид" x:Name="typeInput"/>
+                <authwins:RegAuthInputControl Placeholder="Пол" x:Name="sexInput"/>
+                <authwins:RegAuthInputControl Placeholder="Возраст" x:Name="ageInput"/>
+                <authwins:RegAuthInputControl Placeholder="Порода" x:Name="breedInput"/>
+                <authwins:RegAuthInputControl Placeholder="Вес" x:Name="weightInput"/>
+                <authwins:RegAuthInputControl Placeholder="Номер микрочипа" x:Name="numMicInput"/>
+
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+            <Button Grid.Column="2" 
+            Height="38" 
+            Width="250" 
+            Content="Добавить" 
+            Background="LightSeaGreen" 
+            FontSize="15" 
+            FontFamily="./Resources/montserrat-regular.ttf" 
+            BorderBrush="LightSeaGreen" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Foreground="White" 
+             Margin="0,10,0,0" Click="Add_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="2" 
+            Height="38" 
+            Width="250" 
+            Content="Отмена" 
+            Background="#9A9A9A" 
+            FontSize="15" 
+            FontFamily="./Resources/montserrat-regular.ttf" 
+            BorderBrush="#9A9A9A" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Foreground="White" 
+             Margin="20,10,0,10" Click="Close_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <!--
+        <Button Grid.Column="1" Height="48" Content="Добавить нового пациента" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" VerticalAlignment="Top" Foreground="White" Margin="64,740,64,0" Grid.Row="1" Click="AddNewPet_Click" d:IsHidden="True" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-
+        
         <Grid Grid.Column="1" 
                  Grid.Row="1" 
                  VerticalAlignment="Top"
                  HorizontalAlignment="Stretch"
                  Margin="336,85,64,0" 
-                 Height="160">
+                 Height="160" d:IsHidden="True">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -279,7 +348,7 @@
       VerticalAlignment="Top"
       HorizontalAlignment="Stretch"
       Margin="64,310,64,0" 
-      Height="95">
+      Height="95" d:IsHidden="True">
 
 
             <Grid.ColumnDefinitions>
@@ -339,7 +408,7 @@
         VerticalAlignment="Top"
         HorizontalAlignment="Stretch"
         Margin="64,420,64,0" 
-        Height="95">
+        Height="95" d:IsHidden="True">
 
 
             <Grid.ColumnDefinitions>
@@ -399,7 +468,7 @@
           VerticalAlignment="Top"
           HorizontalAlignment="Stretch"
           Margin="64,530,64,0" 
-          Height="95">
+          Height="95" d:IsHidden="True">
 
 
             <Grid.ColumnDefinitions>
@@ -459,15 +528,15 @@
       VerticalAlignment="Top"
       HorizontalAlignment="Stretch"
       Margin="64,640,64,0" 
-      Height="95">
+      Height="95" d:IsHidden="True">
 
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="133*"/>
-                    <ColumnDefinition Width="330*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="17"/>
-                </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="330*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" 
         VerticalAlignment="Center"
@@ -492,7 +561,7 @@
        Grid.Column="0" 
         Grid.ColumnSpan="2">
     <Run Language="ru-ru" Text="План лечения"/>
-                </TextBlock>
+            </TextBlock>
 
             <Button Grid.Column="2" 
         Height="41" 
@@ -512,7 +581,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Window>

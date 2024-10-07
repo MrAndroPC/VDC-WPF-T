@@ -2,68 +2,199 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:regauth="clr-namespace:VDC_WPF_T.Windows.AuthWindow"
-        Title="AddPetOwnerInfoWindow" WindowStartupLocation="CenterScreen" Width="500" ResizeMode="NoResize" SizeToContent="Height">
-        
+        xmlns:local="clr-namespace:VDC_WPF_T.Windows.AddPet"
+        Title="AddPetOwnerInfoWindow" WindowStartupLocation="CenterScreen" SizeToContent="Height">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <TextBlock Text="Информация о владельце:" FontSize="20"/>
-        </StackPanel>
+        <Grid Grid.Column="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Margin="15">
-            <regauth:RegAuthInputControl Placeholder="Фамилия" x:Name="surnameInput" />
-            <regauth:RegAuthInputControl Placeholder="Имя" x:Name="nameInput" />
-            <regauth:RegAuthInputControl Placeholder="Отчество" x:Name="patronymicInput" />
-            <regauth:RegAuthInputControl Placeholder="Почта" x:Name="emailInput" />
-            <regauth:RegAuthInputControl Placeholder="Номер телефона" x:Name="phoneInput" />
-            <regauth:RegAuthInputControl Placeholder="Пароль" x:Name="passwordInput" IsPassword="True"/>
-            <regauth:RegAuthInputControl Placeholder="Повторите пароль" x:Name="confirmPasswordInput" IsPassword="True"/>
-        </StackPanel>
+            <!-- Search Section -->
+            <Grid VerticalAlignment="Top" Width="Auto"
+                 HorizontalAlignment="Stretch"
+                 Height="48">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchTermTextBox"
+                Grid.Column="0" 
+                 VerticalAlignment="Top"
+                 Height="48"
+                     Padding="10"
+                 VerticalContentAlignment="Center"
+                 FontSize="15" 
+                 FontFamily="./Resources/montserrat-regular.ttf" Foreground="#FF353535">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="BorderBrush" Value="LightGray"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock x:Name="SearchBlock" IsHitTestVisible="False" Text="Введите имя пациента" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,15" Foreground="DarkGray" FontFamily="./Resources/montserrat-regular.ttf" FontSize="15">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <Button Grid.Column="0" Height="32" Width="120" Content="Поиск" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="10" Click="SearchPet_Click" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+            </Grid>
 
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-            <Button Grid.Column="2" 
-            Height="38" 
-            Width="190" 
-            Content="Добавить" 
-            Background="LightSeaGreen" 
-            FontSize="15" 
-            FontFamily="./Resources/montserrat-regular.ttf" 
-            BorderBrush="LightSeaGreen" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Top" 
-            Foreground="White" 
-             Margin="0,10,0,0" Click="Add_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Grid.Column="2" 
-            Height="38" 
-            Width="190" 
-            Content="Отмена" 
-            Background="#9A9A9A" 
-            FontSize="15" 
-            FontFamily="./Resources/montserrat-regular.ttf" 
-            BorderBrush="#9A9A9A" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Top" 
-            Foreground="White" 
-             Margin="20,10,0,10" Click="Close_Click">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="8"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </StackPanel>
+            <!-- PetOwner Data Section -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <ItemsControl x:Name="PetOwnerList" ItemsSource="{Binding PetOwners}">
+                    <ItemsControl.Resources>
+                        <Style TargetType="TextBlock" x:Key="InfoTextStyle">
+                            <Setter Property="VerticalAlignment" Value="Top"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="FontFamily" Value="./Resources/montserrat-regular.ttf"/>
+                        </Style>
+                    </ItemsControl.Resources>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" CornerRadius="10" Background="White" BorderBrush="LightGray" Margin="10" Padding="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch">
+                                            <TextBlock Text="{Binding Surname}" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" TextWrapping="WrapWithOverflow"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Имя: " Style="{Binding InfoTextStyle}"/>
+                                                <TextBlock Text="{Binding Name}" Style="{Binding InfoTextStyle}"/>
+                                        </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Отчество: " Style="{Binding InfoTextStyle}"/>
+                                                <TextBlock Text="{Binding Patronymic}" Style="{Binding InfoTextStyle}"/>
+                                        </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Почта: " Style="{Binding InfoTextStyle}"/>
+                                                <TextBlock Text="{Binding Email}" Style="{Binding InfoTextStyle}"/>
+                                        </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Телефон: " Style="{Binding InfoTextStyle}"/>
+                                                <TextBlock Text="{Binding Phone}" Style="{Binding InfoTextStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <Button Grid.Column="2" Height="32" Content="Выбрать" Width="100" Background="LightSeaGreen" FontSize="15" Click="SelectOwner_Click" Tag="{Binding Id}" Foreground="White">
+                                            <Button.Resources>
+                                                <Style TargetType="{x:Type Border}">
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Style>
+                                            </Button.Resources>
+
+                                        </Button>
+                                    </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Column="1" Background="LightGray"/>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+                <TextBlock Text="Информация о владельце:" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="15">
+                <regauth:RegAuthInputControl Placeholder="Фамилия" x:Name="surnameInput" />
+                <regauth:RegAuthInputControl Placeholder="Имя" x:Name="nameInput" />
+                <regauth:RegAuthInputControl Placeholder="Отчество" x:Name="patronymicInput" />
+                <regauth:RegAuthInputControl Placeholder="Почта" x:Name="emailInput" />
+                <regauth:RegAuthInputControl Placeholder="Номер телефона" x:Name="phoneInput" />
+                <regauth:RegAuthInputControl Placeholder="Пароль" x:Name="passwordInput" IsPassword="True"/>
+                <regauth:RegAuthInputControl Placeholder="Повторите пароль" x:Name="confirmPasswordInput" IsPassword="True"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+                <Button Grid.Column="2" 
+                Height="38" 
+                Width="190" 
+                Content="Добавить" 
+                Background="LightSeaGreen" 
+                FontSize="15" 
+                FontFamily="./Resources/montserrat-regular.ttf" 
+                BorderBrush="LightSeaGreen" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Foreground="White" 
+                 Margin="0,10,0,0" Click="Add_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Grid.Column="2" 
+                Height="38" 
+                Width="190" 
+                Content="Отмена" 
+                Background="#9A9A9A" 
+                FontSize="15" 
+                FontFamily="./Resources/montserrat-regular.ttf" 
+                BorderBrush="#9A9A9A" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Foreground="White" 
+                 Margin="20,10,0,10" Click="Close_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

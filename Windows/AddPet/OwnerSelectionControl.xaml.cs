@@ -34,6 +34,9 @@ namespace VDC_WPF_T.Windows.AddPet
                 Email = "ivanov@test.com",
                 Phone = "123-456-7890"
             };
+
+            var apw = new AddPetOwnerInfoWindow();
+            apw.ShowDialog();
         }
     }
 }
