@@ -56,7 +56,7 @@ namespace VDC_WPF_T
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show($"{nameInput.GetValue()} {sexInput.SelectedOutput}");
         }
 
         private void AddNewPet_Click(object sender, RoutedEventArgs e)

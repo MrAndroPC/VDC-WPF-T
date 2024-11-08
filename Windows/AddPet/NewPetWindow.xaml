@@ -238,11 +238,17 @@
                 <local:OwnerSelectionControl/>
                 <authwins:RegAuthInputControl Placeholder="Кличка" x:Name="nameInput"/>
                 <authwins:RegAuthInputControl Placeholder="Вид" x:Name="typeInput"/>
-                <authwins:RegAuthInputControl Placeholder="Пол" x:Name="sexInput"/>
+                <authwins:RadioButtonsControl x:Name="sexInput">
+                    <authwins:RadioButtonsControl.RadioButtons>
+                        <authwins:CustomRadioButton PlaceholderText="Мальчик" RbOutput="Male" />
+                        <authwins:CustomRadioButton PlaceholderText="Девочка" RbOutput="Female" />
+                    </authwins:RadioButtonsControl.RadioButtons>
+                </authwins:RadioButtonsControl>
                 <authwins:RegAuthInputControl Placeholder="Возраст" x:Name="ageInput"/>
                 <authwins:RegAuthInputControl Placeholder="Порода" x:Name="breedInput"/>
                 <authwins:RegAuthInputControl Placeholder="Вес" x:Name="weightInput"/>
                 <authwins:RegAuthInputControl Placeholder="Номер микрочипа" x:Name="numMicInput"/>
+
 
             </StackPanel>
         </Grid>
