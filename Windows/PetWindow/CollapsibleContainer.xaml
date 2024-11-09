@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="VDC_WPF_T.Windows.PetWindow.CollapsibleContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VDC_WPF_T.Windows.PetWindow"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" x:Name="ContentRow"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Border
+                Grid.Column="0" Grid.Row="0"
+                 VerticalAlignment="Stretch"
+                 Background="White" Grid.ColumnSpan="2" Grid.RowSpan="2" d:IsLocked="True">
+            <Border.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Border.Resources>
+        </Border>
+
+        <!-- Header (collapsible button) -->
+        <Button x:Name="ToggleCollapseButton" 
+                Grid.Row="0" 
+                Height="32" 
+                Width="150" 
+                Background="LightSeaGreen" 
+                FontSize="15" 
+                BorderBrush="LightSeaGreen" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Center" 
+                Foreground="White" 
+                Margin="10,16,10,16" 
+                Content="Collapse"
+                Click="ToggleCollapseButton_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Customizable TextBlock -->
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20" Grid.RowSpan="2">
+            <TextBlock IsHitTestVisible="False" 
+                       Foreground="Black" 
+                       FontFamily="./Resources/montserrat-regular.ttf" 
+                       FontSize="20"
+                       Text="{Binding HeaderText, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        </StackPanel>
+
+        <!-- Collapsible content -->
+        <ContentPresenter Grid.Row="1"
+                          VerticalAlignment="Top" 
+                          HorizontalAlignment="Left"
+                          Margin="20"
+                          Content="{Binding CollapsibleContent, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+    </Grid>
+</UserControl>

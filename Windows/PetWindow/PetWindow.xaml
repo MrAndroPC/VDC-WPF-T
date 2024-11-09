@@ -3,51 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VDC_WPF_T"
+        xmlns:local="clr-namespace:VDC_WPF_T.Windows.PetWindow"
         mc:Ignorable="d"
         Title="PetWindow" Height="1024" Width="1440" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="600">
 
 
     <Window.Resources>
-        <SolidColorBrush x:Key="StandardBorderBrush" Color="#FFFFBFBF" />
-        <SolidColorBrush x:Key="StandardBackgroundBrush" Color="#FFFF7600" />
-        <SolidColorBrush x:Key="HoverBorderBrush" Color="#FF801919" />
-        <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#FF97FF84" />
-        <SolidColorBrush x:Key="SelectedForegroundBrush" Color="#FF188FE4" />
-        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="Red" />
-        <SolidColorBrush x:Key="GlyphBrush" Color="#FFFB00FF" />
-        <SolidColorBrush x:Key="NormalBrush" Color="#FF66123C" />
         <SolidColorBrush x:Key="NormalBorderBrush" Color="#FF79ECFF" />
         <SolidColorBrush x:Key="HorizontalNormalBrush" Color="LightSeaGreen" />
-        <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#FF10FF00" />
-
-        <LinearGradientBrush x:Key="ListBoxBackgroundBrush" StartPoint="0,0" EndPoint="1,0.001">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="White" Offset="0.0" />
-                    <GradientStop Color="White" Offset="0.6" />
-                    <GradientStop Color="#DDDDDD" Offset="1.2"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="StandardBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="#FFF" Offset="0.0"/>
-                    <GradientStop Color="#CCC" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
-            <GradientBrush.GradientStops>
-                <GradientStopCollection>
-                    <GradientStop Color="#BBB" Offset="0.0"/>
-                    <GradientStop Color="#EEE" Offset="0.1"/>
-                    <GradientStop Color="#EEE" Offset="0.9"/>
-                    <GradientStop Color="#FFF" Offset="1.0"/>
-                </GradientStopCollection>
-            </GradientBrush.GradientStops>
-        </LinearGradientBrush>
 
         <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
             <Setter Property="Visibility" Value="Hidden"/>
@@ -57,15 +20,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RepeatButton}">
-                        <Border Name="Border" Margin="1" CornerRadius="2" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="1">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{StaticResource GlyphBrush}" Data="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border Name="Border" Margin="1" CornerRadius="2" BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="1">
+                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+                                <Setter TargetName="Border" Property="Background" Value="Gray" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                                <Setter Property="Foreground" Value="Gray"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -115,7 +78,7 @@
                         <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageUpCommand" />
                     </Track.DecreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0,1,0" Background="{StaticResource HorizontalNormalBrush}" BorderBrush="{StaticResource HorizontalNormalBorderBrush}" />
+                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="1,0,1,0" Background="{StaticResource HorizontalNormalBrush}" />
                     </Track.Thumb>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageDownCommand" />
@@ -138,7 +101,7 @@
                         <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageLeftCommand" />
                     </Track.DecreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1,0,1" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" />
+                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1,0,1"  BorderBrush="{StaticResource NormalBorderBrush}" />
                     </Track.Thumb>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageRightCommand" />
@@ -329,51 +292,11 @@
                         </Button.Resources>
                     </Button>
                 </Grid>
-                <Grid Grid.Column="1" 
-                 Grid.Row="1" 
-                 VerticalAlignment="Top"
-                 Height="Auto">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Border
-                Grid.Column="0" Grid.Row="0"
-                 VerticalAlignment="Stretch"
-                 Background="White" Grid.ColumnSpan="2" d:IsLocked="True">
-                        <Border.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-
-                        </Border.Resources>
-                    </Border>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="20,20,0,20">
-                        <TextBlock IsHitTestVisible="False" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="20"  d:IsLocked="True">
-                    <Run Language="ru-ru" Text="История здоровья:"/>
-                        </TextBlock>
-                    </StackPanel>
-
-                    <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" >
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </Grid>
-
-
 
                 <Grid Grid.Column="1" 
                  Grid.Row="1" 
                  VerticalAlignment="Top"
-                 Height="Auto">
+                 Height="Auto" Margin="0,16,0,0">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -412,7 +335,7 @@
                 <Grid Grid.Column="1" 
                  Grid.Row="1" 
                  VerticalAlignment="Top"
-                 Height="Auto">
+                 Height="Auto" Margin="0,16,0,0">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -448,98 +371,19 @@
                     </Button>
                 </Grid>
 
-                <Grid Grid.Column="1" 
-                 Grid.Row="1" 
-                 VerticalAlignment="Top"
-                 Height="Auto">
+                <local:CollapsibleContainer HeaderText="Custom Header Text" Padding="0,16,0,0">
+                        <local:CollapsibleContainer.CollapsibleContent>
+                        <Ellipse Height="200" Width="200" Stroke="Black" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="https://static.wikia.nocookie.net/befa71f9-a289-486c-a499-e1364226d7f5/scale-to-width/755" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </local:CollapsibleContainer.CollapsibleContent>
+                </local:CollapsibleContainer>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Border
-                Grid.Column="0" Grid.Row="0"
-                 VerticalAlignment="Stretch"
-                 Background="White" Grid.ColumnSpan="2" d:IsLocked="True">
-                        <Border.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
 
-                        </Border.Resources>
-                    </Border>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20" Grid.RowSpan="2">
-                        <TextBlock IsHitTestVisible="False" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="20"  d:IsLocked="True">
-                    <Run Language="ru-ru" Text="План лечения:"/>
-                        </TextBlock>
-                    </StackPanel>
-
-                    <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_3" d:IsLocked="True" >
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </Grid>
-
-                <Grid Grid.Column="1" 
-                 Grid.Row="1" 
-                 VerticalAlignment="Top"
-                 Height="Auto">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Border
-                Grid.Column="0" Grid.Row="0"
-                 VerticalAlignment="Stretch"
-                 Background="White" Grid.ColumnSpan="2" d:IsLocked="True">
-                        <Border.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-
-                        </Border.Resources>
-                    </Border>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20" Grid.RowSpan="2">
-                        <TextBlock IsHitTestVisible="False" Foreground="Black" FontFamily="./Resources/montserrat-regular.ttf" FontSize="20"  d:IsLocked="True">
-                    <Run Language="ru-ru" Text="Примечания и наблюдения:"/>
-                        </TextBlock>
-                    </StackPanel>
-
-                    <Button Grid.Column="1" Height="32" Width="150" Content="Редакторовать" Background="LightSeaGreen" FontSize="15" FontFamily="./Resources/montserrat-regular.ttf" BorderBrush="LightSeaGreen" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0" Click="Button_Click_2" d:IsLocked="True" >
-                        <Button.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </Grid>
-
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="Grid">
-                        <Setter Property="Margin" Value="0,0,0,16"/>
-                        <!-- Adjust the margin as needed -->
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
 
             </ItemsControl>
-
-
         </ScrollViewer>
-
-
-
-
     </Grid>
 </Window>
