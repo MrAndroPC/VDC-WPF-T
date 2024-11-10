@@ -96,6 +96,7 @@ namespace VDC_WPF_T
             if (sender is Button button && button.DataContext is Pet pet)
             {
                 PetWindow pw = new PetWindow(pet);
+                pw.Owner = this;
                 pw.ShowDialog();
             }
 
@@ -113,6 +114,7 @@ namespace VDC_WPF_T
             if (sender is Button)
             {
                 NewPetWindow npw = new NewPetWindow();
+                npw.Owner = this;
                 Visibility = Visibility.Hidden;
                 npw.Closed += (s, args) =>
                 {
