@@ -1,0 +1,158 @@
+/* Styles for OwnerSelectionModalContent */
+
+.modalLayout {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr; /* Search/List | Separator | Add Form */
+  gap: 20px;
+  min-width: 700px; /* Ensure enough space */
+  max-height: 70vh; /* Limit height */
+  font-family: 'Montserrat', sans-serif;
+}
+
+.separator {
+  background-color: #ccc;
+  width: 1px;
+}
+
+.listSection,
+.addSection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto; /* Allow scrolling within sections if needed */
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+.searchContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.searchButton {
+  padding: 8px 15px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+
+  &:hover {
+    background-color: #1a9a9a;
+  }
+}
+
+.ownerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px; /* Limit list height */
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.ownerItem {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+}
+
+.ownerInfo {
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.selectOwnerButton {
+  padding: 5px 10px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8em;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: #1a9a9a;
+  }
+}
+
+.addForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.addButton,
+.cancelButton {
+   padding: 8px 15px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 0.9em;
+   font-weight: bold;
+}
+
+.addButton {
+  background-color: LightSeaGreen;
+  color: white;
+   &:hover { background-color: #1a9a9a; }
+}
+
+.cancelButton {
+   background-color: #6c757d;
+   color: white;
+   &:hover { background-color: #5a6268; }
+}
+
+.errorMessage {
+  color: darkred;
+  font-size: 0.85em;
+  text-align: center;
+}

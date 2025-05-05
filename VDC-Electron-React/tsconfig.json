@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "target": "ES2020", // Target modern ECMAScript features
+    "module": "NodeNext", // Use CommonJS for Electron main/preload
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // Include DOM types for renderer compatibility via Vite
+    "jsx": "react-jsx", // Support JSX syntax for React
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
+    "resolveJsonModule": true, // Allow importing JSON modules
+    "isolatedModules": true, // Ensure each file can be safely transpiled without relying on other imports
+    "noEmit": true, // Prevent `tsc` from emitting output files; Vite/Electron build tools will handle this
+
+    /* Module Resolution Options */
+    "moduleResolution": "nodenext", // Use Node.js style module resolution
+    "baseUrl": ".", // Base directory to resolve non-absolute module names
+    "paths": { // Optional: Define aliases if needed (must match vite.config.ts)
+      // "@/*": ["src/*"]
+    },
+
+    /* Source Map Options */
+    // "sourceMap": true, // Source maps can be useful for debugging (handled by build tools)
+
+    /* Output Options */
+    // "outDir": "./dist", // Output directory (handled by build tools)
+  },
+  "files": [
+    "./src/renderer.d.ts"
+  ],
+  "include": [
+    "main.ts",
+    "preload.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts" //  Vite config for type checking
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules
+    "build" // Exclude the build output directory
+  ]
+}

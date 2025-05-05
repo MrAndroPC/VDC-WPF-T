@@ -1,0 +1,110 @@
+/* Styles for AddPetPage component */
+
+.pageContainer {
+  padding: 30px;
+  max-width: 700px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.input,
+.select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: inherit;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.button {
+  padding: 12px 15px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #169191;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.9em;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.addButton,
+.cancelButton {
+   padding: 12px 15px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   font-size: 1em;
+   font-weight: bold;
+   font-family: inherit;
+   min-width: 150px;
+   text-align: center;
+}
+
+.addButton {
+  background-color: LightSeaGreen;
+  color: white;
+   &:hover { background-color: #1a9a9a; }
+   &:disabled { background-color: #ccc; cursor: not-allowed; }
+}
+
+.cancelButton {
+   background-color: #6c757d;
+   color: white;
+   &:hover { background-color: #5a6268; }
+   &:disabled { background-color: #ccc; cursor: not-allowed; }
+}

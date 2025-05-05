@@ -1,0 +1,233 @@
+/* Styles for MainPage component */
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  background-color: #EBEBEB; /* Original Grid background */
+}
+
+.header {
+  height: 60px;
+  background-color: LightSeaGreen;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif; // Apply specific font
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.mainContent {
+  flex-grow: 1; /* Allow content to fill remaining space */
+  display: grid;
+  /* Mimic original Grid definitions - adjust as needed */
+  grid-template-columns: minmax(0, 200px) minmax(1024px, 1fr) minmax(0, 200px);
+  grid-template-rows: auto; /* Content height */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.leftSidebar, .rightSidebar {
+  /* Placeholders for potential side content */
+  background-color: #f0f0f0; /* Example background */
+}
+
+.centerColumn {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* User info column + Pet list column */
+  grid-template-rows: auto 1fr auto; /* Search/Header, List, Add button */
+  gap: 20px; /* Spacing between elements */
+  padding: 20px 64px; /* Original margins */
+  overflow: hidden; /* Prevent internal overflow */
+}
+
+.userInfo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3; /* Span across search and list rows */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 44px; /* Approximate original margin */
+}
+
+.userImage {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%; /* Make it circular */
+  background-color: #ccc; /* Placeholder */
+  background-size: cover;
+  background-position: center;
+  border: 1px solid black;
+  margin-bottom: 20px; /* Space below image */
+}
+
+.userName {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; // Apply specific font
+}
+
+.logoutButton {
+  margin-top: 15px; /* Space above the button */
+  padding: 8px 15px;
+  background-color: #dc3545; /* Red color for logout */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit; /* Use the main font */
+
+  &:hover {
+    background-color: #c82333; /* Darker red */
+  }
+}
+
+.searchAndHeader {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between header and search */
+  padding-top: 80px; /* Approximate original margin */
+}
+
+.patientsHeader {
+   font-size: 20px;
+   font-family: 'Montserrat', sans-serif; // Apply specific font
+   margin-bottom: 10px; /* Space below header */
+   border-bottom: 1px solid black; /* Separator line */
+   padding-bottom: 5px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  position: relative; /* For placeholder positioning */
+}
+
+.searchInput {
+  flex-grow: 1;
+  height: 48px;
+  padding: 10px 140px 10px 10px; /* Padding for text and button */
+  font-size: 15px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.searchPlaceholder {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: DarkGray;
+  font-size: 15px;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+.searchButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  width: 120px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #169191;
+  }
+}
+
+.petListContainer {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  overflow-y: auto;
+  padding-top: 20px;
+}
+
+.addPetButtonContainer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  padding-bottom: 54px;
+}
+
+.addPetButton {
+  height: 48px;
+  width: 100%;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #169191;
+  }
+}
+
+/* Styles for the Pet Item (within the list) */
+.petItem {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 15px;
+  align-items: center;
+}
+
+.petImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #eee;
+  background-size: cover;
+  background-position: center;
+}
+
+.petInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.petName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.petInfoText {
+  font-size: 15px;
+}
+
+.detailsButton {
+   height: 32px;
+   width: 152px;
+   background-color: LightSeaGreen;
+   color: white;
+   border: none;
+   border-radius: 10px;
+   font-size: 15px;
+   cursor: pointer;
+   justify-self: end;
+   align-self: end;
+   transition: background-color 0.2s ease;
+
+   &:hover {
+    background-color: #169191;
+   }
+}

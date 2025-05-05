@@ -1,0 +1,47 @@
+/* Global styles and font definitions */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add other global styles here if needed */
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 24px;
+  height: 18px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: LightSeaGreen;
+  border-radius: 10px;
+  border: 6px solid transparent;
+  background-clip: padding-box;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: #169191;
+  }
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}

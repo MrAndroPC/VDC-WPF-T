@@ -1,0 +1,51 @@
+/* Styles for OwnerSelection component */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  padding: 5px 5px 5px 15px; /* Padding around content */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-height: 48px; /* Match input height */
+  box-sizing: border-box;
+}
+
+.ownerDisplay {
+  flex-grow: 1; /* Take available space */
+  font-size: 1em;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placeholder {
+  color: #888; /* Placeholder text color */
+}
+
+.selectButton {
+  height: 38px; /* Slightly smaller than container */
+  width: 38px;
+  padding: 0; /* Remove padding for icon */
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 8px; /* Slightly smaller radius */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent button from shrinking */
+
+  &:hover {
+    background-color: #1a9a9a;
+  }
+
+  svg {
+    width: 24px; /* Adjust icon size */
+    height: 24px;
+    fill: white;
+  }
+}
