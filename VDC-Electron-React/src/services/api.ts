@@ -3,6 +3,7 @@
 import { UserSession } from '../models/UserSession';
 import { Pet } from '../models/Pet';
 import { PetOwner } from '../models/PetOwner'; // Import PetOwner
+import { MedicalEntry } from 'src/models/MedicalEntry';
 // Import other models like Vet, MedicalEntry as needed for request/response types
 
 const AUTH_BASE_URL = 'http://localhost:8083'; // Auth service URL
@@ -174,5 +175,58 @@ export async function createPet(token: string, payload: CreatePetPayloadDTO): Pr
 }
 
 
-// TODO: Add functions for updatePet, deletePet, getPetById, getMedicalEntries, createMedicalEntry etc.
-// These will require the auth token in the header.
+// Function to update a pet (needs token)
+export async function updatePet(token: string, id: number, petData: Partial<Pet>): Promise<Pet> {
+    const url = `${INFO_BASE_URL}/info/v1/pets/${id}`;
+    const options: RequestInit = {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(petData),
+    };
+    return handleFetch(url, options);
+}
+
+// Function to get medical entries (needs token)
+export async function getMedicalEntries(
+    token: string, 
+    filters: {
+        pet_id?: number,
+        entry_id?: number,
+        offset?: number,
+        limit?: number
+    }
+): Promise<MedicalEntry[]> {
+    const params = new URLSearchParams();
+    if (filters.pet_id) params.append('pet_id', filters.pet_id.toString());
+    if (filters.entry_id) params.append('entry_id', filters.entry_id.toString());
+    if (filters.offset) params.append('offset', filters.offset.toString());
+    if (filters.limit) params.append('limit', filters.limit.toString());
+    
+    const url = `${INFO_BASE_URL}/info/v1/record/entries?${params.toString()}`;
+    const options: RequestInit = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    };
+    return handleFetch(url, options);
+}
+
+// Function to create a medical entry (needs token)
+export async function createMedicalEntry(token: string, entryData: Omit<MedicalEntry, 'id'>): Promise<number> {
+    const url = `${INFO_BASE_URL}/info/v1/record/entries`;
+    const options: RequestInit = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(entryData),
+    };
+    const response = await handleFetch(url, options);
+    return response; // Returns the new entry ID
+}

@@ -103,3 +103,177 @@
      background-color: #5a6268;
    }
 }
+
+/* Medical Entries Styles */
+.entriesList {
+  margin-top: 1rem;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.entryCard {
+  background: white;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.entryDate {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.entryDisease {
+  color: #e67e22;
+}
+
+.entryContent {
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.entryDescription {
+  margin-bottom: 8px;
+}
+
+.entryVaccinations,
+.entryRecommendation {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px solid #eee;
+}
+
+/* Form Styles */
+.editForm, .entryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  label {
+    min-width: 150px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95em;
+  }
+
+  input, textarea {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-family: inherit;
+    
+    &:focus {
+      outline: none;
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  input[type="number"] {
+    width: 80px;
+  }
+
+  input[type="date"] {
+    width: 180px;
+  }
+}
+
+.formButtons, .editButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-end;
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .saveButton {
+    background-color: LightSeaGreen;
+    color: white;
+
+    &:hover {
+      background-color: #169191;
+    }
+  }
+
+  .cancelButton {
+    background-color: #dc3545;
+    color: white;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  .editButton {
+    background-color: LightSeaGreen;
+    color: white;
+
+    &:hover {
+      background-color: #169191;
+    }
+  }
+}
+
+.addButton {
+  padding: 5px 10px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #169191;
+  }
+}
+
+.editButton {
+  padding: 5px 10px;
+  background-color: LightSeaGreen;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #169191;
+  }
+}

@@ -3,6 +3,7 @@
 
 // Import necessary types used by the APIs
 import { Pet } from './models/Pet';
+import { MedicalEntry } from './models/MedicalEntry';
 import { UserSession } from './models/UserSession';
 import { PetOwner } from './models/PetOwner';
 import { RegisterVetPayload, RegisterOwnerPayload } from './services/api';
@@ -11,8 +12,12 @@ declare global {
   interface Window {
     petAPI: {
       loadAll: () => Promise<Pet[]>;
-      addPet: (data: { petData: Omit<Pet, 'id'>, ownerId: number }) => Promise<{ success: boolean; newId?: number; error?: string }>; // Update signature
-      // TODO: Add updatePet, deletePet, getPetById, getMedicalEntries, addMedicalEntry signatures later
+      addPet: (data: { petData: Omit<Pet, 'id'>, ownerId: number }) => Promise<{ success: boolean; newId?: number; error?: string }>;
+      updatePet: (id: number, petData: Partial<Pet>) => Promise<{ success: boolean; error?: string }>;
+      getMedicalEntries: (petId: number, limit: number, offset: number) => Promise<MedicalEntry[]>;
+      addMedicalEntry: (entryData: Omit<MedicalEntry, 'id'>) => Promise<{ success: boolean; newId?: number; error?: string }>;
+      updateMedicalEntry: (id: number, entryData: Partial<MedicalEntry>) => Promise<{ success: boolean; error?: string }>;
+      deleteMedicalEntry: (id: number) => Promise<{ success: boolean; error?: string }>;
     };
     ownerAPI: {
       getAll: () => Promise<PetOwner[]>;

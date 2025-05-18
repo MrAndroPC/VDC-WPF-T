@@ -4,7 +4,20 @@ import Store from 'electron-store';
 import { Pet } from './src/models/Pet';
 import { UserSession } from './src/models/UserSession';
 import { PetOwner } from './src/models/PetOwner';
-import { signIn, registerVet, getAllPets, RegisterVetPayload, getAllOwners, registerOwner, RegisterOwnerPayload, createPet } from './src/services/api'; // Added createPet import
+import { 
+  signIn, 
+  registerVet, 
+  getAllPets, 
+  RegisterVetPayload, 
+  getAllOwners, 
+  registerOwner, 
+  RegisterOwnerPayload, 
+  createPet,
+  updatePet,
+  getMedicalEntries,
+  createMedicalEntry
+} from './src/services/api';
+import { MedicalEntry } from './src/models/MedicalEntry';
 import { jwtDecode } from 'jwt-decode';
 
 // schema for the store - only currentUser is needed now
@@ -122,7 +135,56 @@ app.whenReady().then(() => {
     }
   });
 
-  // TODO: Add handlers for update-pet, delete-pet, get-pet-by-id, get-medical-entries, add-medical-entry etc. using API calls
+  ipcMain.handle('update-pet', async (event, { id, petData }: { id: number, petData: Partial<Pet> }) => {
+    const currentUser = store.get('currentUser');
+    if (!currentUser?.token) {
+      console.error('update-pet: No token found.');
+      return { success: false, error: 'User not authenticated.' };
+    }
+    try {
+      const updatedPet = await updatePet(currentUser.token, id, petData);
+      return { success: true, pet: updatedPet };
+    } catch (error) {
+      console.error('Failed to update pet:', error);
+      const message = error instanceof Error ? error.message : String(error);
+      return { success: false, error: message };
+    }
+  });
+
+  ipcMain.handle('get-medical-entries', async (event, { petId, limit, offset }: { petId: number, limit: number, offset: number }) => {
+    const currentUser = store.get('currentUser');
+    if (!currentUser?.token) {
+      console.error('get-medical-entries: No token found.');
+      throw new Error('User not authenticated.');
+    }
+    try {
+      const entries = await getMedicalEntries(currentUser.token, { 
+        pet_id: petId,
+        limit,
+        offset
+      });
+      return entries;
+    } catch (error) {
+      console.error('Failed to get medical entries:', error);
+      throw error;
+    }
+  });
+
+  ipcMain.handle('add-medical-entry', async (event, entryData: Omit<MedicalEntry, 'id'>) => {
+    const currentUser = store.get('currentUser');
+    if (!currentUser?.token) {
+      console.error('add-medical-entry: No token found.');
+      return { success: false, error: 'User not authenticated.' };
+    }
+    try {
+      const newId = await createMedicalEntry(currentUser.token, entryData);
+      return { success: true, newId };
+    } catch (error) {
+      console.error('Failed to add medical entry:', error);
+      const message = error instanceof Error ? error.message : String(error);
+      return { success: false, error: message };
+    }
+  });
 
   // --- End Pet Data IPC Handlers ---
 
